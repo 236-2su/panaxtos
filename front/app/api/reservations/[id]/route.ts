@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
-import { prisma } from '@/lib/prisma';
+import { getPrisma } from '@/lib/prisma';
 import { getTokenFromRequest, verifyToken } from '@/lib/jwt';
 
 // GET /api/reservations/[id] - 관리자만 (상세 정보)
@@ -16,6 +16,7 @@ export async function GET(
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
+        const prisma = getPrisma();
         const reservation = await prisma.reservation.findUnique({
             where: { id: parseInt(id) }
         });
@@ -45,6 +46,7 @@ export async function PUT(
         const isAdmin = token && (await verifyToken(token));
         const password = body.password; // 요청 바디에서 비밀번호 확인
 
+        const prisma = getPrisma();
         // 1. 기존 예약 조회
         const reservation = await prisma.reservation.findUnique({ where: { id: parseInt(id) } });
 
@@ -104,6 +106,7 @@ export async function DELETE(
         const token = getTokenFromRequest(request.headers.get('authorization'));
         const isAdmin = token && (await verifyToken(token));
 
+        const prisma = getPrisma();
         // 1. 기존 예약 조회 (비밀번호 확인용)
         const reservation = await prisma.reservation.findUnique({ where: { id: parseInt(id) } });
 

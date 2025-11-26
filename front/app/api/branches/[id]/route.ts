@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
-import { prisma } from '@/lib/prisma';
+import { getPrisma } from '@/lib/prisma';
 import { getTokenFromRequest, verifyToken } from '@/lib/jwt';
 
 // GET /api/branches/[id]
@@ -11,6 +11,7 @@ export async function GET(
 ) {
     const { id } = await params;
     try {
+        const prisma = getPrisma();
         const branch = await prisma.branch.findUnique({
             where: { id }
         });
@@ -41,6 +42,7 @@ export async function PUT(
         }
 
         const body = await request.json();
+        const prisma = getPrisma();
         const branch = await prisma.branch.update({
             where: { id },
             data: body
@@ -67,6 +69,7 @@ export async function DELETE(
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
+        const prisma = getPrisma();
         await prisma.branch.delete({
             where: { id }
         });

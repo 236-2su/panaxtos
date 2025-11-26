@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
-import { prisma } from '@/lib/prisma';
+import { getPrisma } from '@/lib/prisma';
 import { getTokenFromRequest, verifyToken } from '@/lib/jwt';
 
 // GET /api/branches - 모두 조회 (공개)
 export async function GET() {
     try {
+        const prisma = getPrisma();
         const branches = await prisma.branch.findMany();
         return NextResponse.json(branches);
     } catch (error) {
@@ -26,6 +27,7 @@ export async function POST(request: NextRequest) {
         }
 
         const body = await request.json();
+        const prisma = getPrisma();
         const branch = await prisma.branch.create({ data: body });
         return NextResponse.json(branch);
     } catch (error) {

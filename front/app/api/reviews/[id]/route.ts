@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
-import { prisma } from '@/lib/prisma';
+import { getPrisma } from '@/lib/prisma';
 
 // GET /api/reviews/[id]
 export async function GET(
@@ -10,6 +10,7 @@ export async function GET(
 ) {
     const { id } = await params;
     try {
+        const prisma = getPrisma();
         const review = await prisma.review.findUnique({
             where: { id: parseInt(id) }
         });
@@ -36,6 +37,7 @@ export async function PUT(
             return NextResponse.json({ error: 'Password required' }, { status: 400 });
         }
         // Fetch existing review to compare password
+        const prisma = getPrisma();
         const existingReview = await prisma.review.findUnique({ where: { id: parseInt(id) } });
 
         if (!existingReview) {
@@ -69,6 +71,7 @@ export async function DELETE(
             return NextResponse.json({ error: 'Password required' }, { status: 400 });
         }
         // Fetch existing review to verify password
+        const prisma = getPrisma();
         const existingReview = await prisma.review.findUnique({ where: { id: parseInt(id) } });
 
         if (!existingReview) {

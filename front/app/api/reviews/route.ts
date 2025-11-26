@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
-import { prisma } from '@/lib/prisma';
+import { getPrisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,6 +11,7 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url);
         const branchId = searchParams.get('branchId');
 
+        const prisma = getPrisma();
         const reviews = await prisma.review.findMany({
             where: branchId ? { branchId } : undefined,
             orderBy: { createdAt: 'desc' }
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: '비밀번호는 4자리 이상이어야 합니다.' }, { status: 400 });
         }
 
+        const prisma = getPrisma();
         const review = await prisma.review.create({ data: body });
 
         return NextResponse.json(review);
