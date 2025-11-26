@@ -107,6 +107,12 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   handler satisfies AppPageConfig<"/reservation">
 }
 
+// Validate ../../app/reviews/[id]/edit/page.tsx
+{
+  const handler = {} as typeof import("../../app/reviews/[id]/edit/page.js")
+  handler satisfies AppPageConfig<"/reviews/[id]/edit">
+}
+
 // Validate ../../app/reviews/[id]/page.tsx
 {
   const handler = {} as typeof import("../../app/reviews/[id]/page.js")
@@ -117,6 +123,12 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   const handler = {} as typeof import("../../app/reviews/page.js")
   handler satisfies AppPageConfig<"/reviews">
+}
+
+// Validate ../../app/reviews/write/page.tsx
+{
+  const handler = {} as typeof import("../../app/reviews/write/page.js")
+  handler satisfies AppPageConfig<"/reviews/write">
 }
 
 // Validate ../../app/api/auth/login/route.ts

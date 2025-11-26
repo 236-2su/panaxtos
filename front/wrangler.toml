@@ -1,0 +1,8 @@
+name = "panaxtos"
+compatibility_date = "2024-01-01"
+
+# D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "panaxtos-db"
+database_id = "3cd042ec-3e93-41da-8034-26fcdc26d6d9"

@@ -16,10 +16,13 @@ export function useReviews(branchId?: string) {
         ? `/api/reviews?branchId=${branchId}`
         : '/api/reviews';
 
-    const { data, error, isLoading, mutate } = useSWR<Review[]>(url, fetcher);
+    const { data, error, isLoading, mutate } = useSWR<Review[]>(url, fetcher, {
+        revalidateOnFocus: true,
+        revalidateOnReconnect: true
+    });
 
     return {
-        reviews: data,
+        reviews: data || [],
         isLoading,
         isError: error,
         mutate

@@ -1,0 +1,45 @@
+[
+  {
+    "title": "qwewqe",
+    "author": "qweqwe",
+    "password": "12341234",
+    "content": "1234",
+    "rating": 5,
+    "branchId": "jinju-center",
+    "comment": "1234",
+    "id": 1,
+    "createdAt": "2025-11-26T07:06:02.702Z"
+  },
+  {
+    "title": "qweqwe",
+    "author": "qweqwe",
+    "password": "qweqwe",
+    "content": "qweqwe",
+    "rating": 5,
+    "branchId": "jinju-center",
+    "comment": "qweqwe",
+    "id": 2,
+    "createdAt": "2025-11-26T07:10:51.096Z"
+  },
+  {
+    "title": "Test Review",
+    "author": "Tester",
+    "password": "1234",
+    "content": "This is a test review",
+    "rating": 5,
+    "branchId": "jinju-center",
+    "comment": "This is a test review",
+    "id": 3,
+    "createdAt": "2025-11-26T07:18:00.345Z"
+  },
+  {
+    "title": "Admin Review",
+    "author": "Admin",
+    "comment": "Admin content",
+    "rating": 5,
+    "password": "1234",
+    "branchId": "jinju-center",
+    "id": 4,
+    "createdAt": "2025-11-26T07:19:30.455Z"
+  }
+]

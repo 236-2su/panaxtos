@@ -1,4 +1,20 @@
 {
-  "/api/branches/route": "app/api/branches/route.js",
-  "/api/reservations/route": "app/api/reservations/route.js"
+  "/about/page": "app/about/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/reviews/write/page": "app/admin/reviews/write/page.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/branches/[id]/route": "app/api/branches/[id]/route.js",
+  "/api/reservations/[id]/route": "app/api/reservations/[id]/route.js",
+  "/api/reservations/route": "app/api/reservations/route.js",
+  "/api/reviews/[id]/route": "app/api/reviews/[id]/route.js",
+  "/api/reviews/route": "app/api/reviews/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/location/page": "app/location/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/programs/page": "app/programs/page.js",
+  "/reservation/page": "app/reservation/page.js",
+  "/reviews/[id]/page": "app/reviews/[id]/page.js",
+  "/reviews/page": "app/reviews/page.js",
+  "/reviews/write/page": "app/reviews/write/page.js"
 }

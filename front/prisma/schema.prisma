@@ -25,6 +25,7 @@ model Review {
   id        Int      @id @default(autoincrement())
   branchId  String
   author    String
+  password  String
   title     String?
   rating    Int
   comment   String
@@ -38,6 +39,7 @@ model Reservation {
   branchId  String
   name      String
   phone     String
+  password  String
   dateTime  DateTime
   notes     String?
   programId String?

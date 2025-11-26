@@ -10,7 +10,8 @@ export default function WriteReview() {
         title: '',
         author: '',
         content: '',
-        rating: 5
+        rating: 5,
+        password: '' // 초기값 추가
     });
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -25,10 +26,11 @@ export default function WriteReview() {
                 author: form.author,
                 comment: form.content,
                 rating: form.rating,
+                password: form.password, // 비밀번호 전송
                 branchId: 'jinju-center'
             });
             alert('후기가 등록되었습니다.');
-            router.push('/about'); // 후기 목록이 있는 페이지로 이동
+            router.push('/admin'); // 관리자 대시보드로 이동
         } catch (err) {
             console.error(err);
             alert('등록 실패: ' + (err as any).message);
@@ -51,16 +53,30 @@ export default function WriteReview() {
                     />
                 </div>
 
-                <div>
-                    <label className="block text-sm font-bold mb-2">작성자 (표시용)</label>
-                    <input
-                        type="text"
-                        className="w-full p-3 border rounded focus:outline-none focus:border-[#EF9300]"
-                        value={form.author}
-                        onChange={e => setForm({ ...form, author: e.target.value })}
-                        placeholder="예: 김OO 회원님 어머니"
-                        required
-                    />
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-bold mb-2">작성자 (표시용)</label>
+                        <input
+                            type="text"
+                            className="w-full p-3 border rounded focus:outline-none focus:border-[#EF9300]"
+                            value={form.author}
+                            onChange={e => setForm({ ...form, author: e.target.value })}
+                            placeholder="예: 김OO 회원님 어머니"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-bold mb-2">비밀번호 (관리용)</label>
+                        <input
+                            type="password"
+                            className="w-full p-3 border rounded focus:outline-none focus:border-[#EF9300]"
+                            value={form.password}
+                            onChange={e => setForm({ ...form, password: e.target.value })}
+                            placeholder="4자리 이상"
+                            minLength={4}
+                            required
+                        />
+                    </div>
                 </div>
 
                 <div>

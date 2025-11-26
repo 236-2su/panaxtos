@@ -15,9 +15,16 @@ export default function ReviewsPage() {
                     <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--text-main)' }}>
                         훈련 후기
                     </h1>
-                    <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>
+                    <p className="text-xl mb-8" style={{ color: 'var(--text-secondary)' }}>
                         파낙토스 진주센터에서 훈련받으신 회원분들의 생생한 후기입니다.
                     </p>
+                    <Link
+                        href="/reviews/write"
+                        className="inline-block px-6 py-3 rounded-lg font-bold text-white transition-all hover:opacity-90 shadow-md"
+                        style={{ background: 'var(--color-accent)' }}
+                    >
+                        📝 후기 작성하기
+                    </Link>
                 </div>
 
                 {/* 후기 목록 */}

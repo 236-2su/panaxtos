@@ -23,6 +23,27 @@ export default function ReviewDetailPage() {
         fetcher
     );
 
+    const handleDelete = async () => {
+        const password = prompt('후기 작성 시 설정한 비밀번호를 입력해주세요.');
+        if (!password) return;
+
+        try {
+            await fetcher(`/api/reviews/${params.id}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password })
+            });
+            alert('후기가 삭제되었습니다.');
+            router.push('/reviews');
+        } catch (error: any) {
+            alert(error.response?.data?.error || '삭제에 실패했습니다. 비밀번호를 확인해주세요.');
+        }
+    };
+
+    const handleEdit = () => {
+        router.push(`/reviews/${params.id}/edit`);
+    };
+
     if (isLoading) {
         return (
             <div className="min-h-screen py-16 px-4 flex items-center justify-center" style={{ background: 'var(--bg-main)' }}>
@@ -47,17 +68,30 @@ export default function ReviewDetailPage() {
     return (
         <div className="min-h-screen py-16 px-4" style={{ background: 'var(--bg-main)' }}>
             <div className="max-w-4xl mx-auto">
-                {/* 뒤로가기 버튼 */}
-                <button
-                    onClick={() => router.back()}
-                    className="mb-6 flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                    <span>←</span> 목록으로
-                </button>
+                <div className="flex justify-between items-center mb-6">
+                    <button
+                        onClick={() => router.back()}
+                        className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                    >
+                        <span>←</span> 목록으로
+                    </button>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={handleEdit}
+                            className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50"
+                        >
+                            수정
+                        </button>
+                        <button
+                            onClick={handleDelete}
+                            className="px-3 py-1 text-sm border border-red-200 text-red-600 rounded hover:bg-red-50"
+                        >
+                            삭제
+                        </button>
+                    </div>
+                </div>
 
-                {/* 후기 내용 */}
                 <article className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
-                    {/* 헤더 */}
                     <header className="mb-8 pb-6 border-b border-gray-200">
                         {review.title && (
                             <h1 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-main)' }}>
@@ -94,7 +128,6 @@ export default function ReviewDetailPage() {
                         </div>
                     </header>
 
-                    {/* 본문 */}
                     <div className="prose max-w-none">
                         <p
                             className="whitespace-pre-wrap leading-relaxed text-lg"
@@ -105,7 +138,6 @@ export default function ReviewDetailPage() {
                     </div>
                 </article>
 
-                {/* CTA */}
                 <div className="mt-12 text-center p-8 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl">
                     <h3 className="text-2xl font-bold mb-4">무료 상담을 받아보세요</h3>
                     <p className="text-gray-600 mb-6">

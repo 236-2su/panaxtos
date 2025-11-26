@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "branchId": "jinju-center",
+    "name": "이상욱",
+    "phone": "12341234",
+    "password": "12341234",
+    "dateTime": "2025-12-05T10:00:00",
+    "notes": "",
+    "id": 1,
+    "createdAt": "2025-11-26T06:46:26.138Z"
+  },
+  {
+    "branchId": "jinju-center",
+    "name": "이상욱",
+    "phone": "12341234",
+    "password": "12341234",
+    "dateTime": "2025-11-28T14:00:00",
+    "notes": "12341234",
+    "id": 2,
+    "createdAt": "2025-11-26T06:57:30.895Z"
+  },
+  {
+    "branchId": "jinju-center",
+    "name": "이상욱",
+    "phone": "12341234",
+    "password": "12341234",
+    "dateTime": "2025-11-29T14:00:00",
+    "notes": "12341234",
+    "id": 3,
+    "createdAt": "2025-11-26T06:57:50.751Z"
+  },
+  {
+    "branchId": "jinju-center",
+    "name": "이상욱",
+    "phone": "12341234",
+    "password": "12341234",
+    "dateTime": "2025-11-28T14:00:00",
+    "notes": "12341234",
+    "id": 4,
+    "createdAt": "2025-11-26T07:05:28.754Z"
+  },
+  {
+    "branchId": "jinju-center",
+    "name": "이상욱",
+    "phone": "12341234",
+    "password": "12341234",
+    "dateTime": "2025-11-29T11:00:00",
+    "notes": "12341234",
+    "id": 5,
+    "createdAt": "2025-11-26T07:10:17.705Z"
+  },
+  {
+    "branchId": "jinju-center",
+    "name": "TestUser",
+    "phone": "010-0000-0000",
+    "password": "1234",
+    "dateTime": "2025-11-27T14:00:00",
+    "notes": "",
+    "id": 6,
+    "createdAt": "2025-11-26T07:16:37.816Z"
+  }
+]
