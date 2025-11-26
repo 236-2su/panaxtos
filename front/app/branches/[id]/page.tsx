@@ -5,6 +5,8 @@ import { useBranch } from '@/hooks/useBranches';
 import { useReviews } from '@/hooks/useReviews';
 import Link from 'next/link';
 
+export const runtime = 'edge';
+
 export default function BranchDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const { branch, isLoading: branchLoading, isError: branchError } = useBranch(id);

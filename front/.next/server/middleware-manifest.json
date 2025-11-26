@@ -2,5 +2,40 @@
   "version": 3,
   "middleware": {},
   "sortedMiddleware": [],
-  "functions": {}
+  "functions": {
+    "/api/reviews/route": {
+      "files": [
+        "server/middleware-build-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/server-reference-manifest.js",
+        "server/app/api/reviews/route_client-reference-manifest.js",
+        "server/edge/chunks/_next-internal_server_app_api_reviews_route_actions_b6aea7e9.js",
+        "server/edge/chunks/turbopack-_next-internal_server_app_api_reviews_route_actions_9d5ffd1b.js",
+        "server/edge/chunks/node_modules_next_dist_esm_8036c7d6._.js",
+        "server/edge/chunks/node_modules_next_dist_compiled_a4197584._.js",
+        "server/edge/chunks/node_modules_next_dist_7bea040f._.js",
+        "server/edge/chunks/edge-wrapper_d900a9f5.js",
+        "server/edge/chunks/node_modules_f09e72cf._.js",
+        "server/edge/chunks/[root-of-the-server]__33e082e3._.js",
+        "server/edge/chunks/turbopack-edge-wrapper_20280f63.js"
+      ],
+      "name": "app/api/reviews/route",
+      "page": "/api/reviews/route",
+      "matchers": [
+        {
+          "regexp": "^/api/reviews(?:/)?$",
+          "originalSource": "/api/reviews"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "RDS9xCObJlxhvmEhNvqfrcxIpmp4rDS4cPuiUuH5Ds4=",
+        "__NEXT_PREVIEW_MODE_ID": "ab54e0570b0bec7cd63c491ce1e04b2a",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "4ecce53e1f0abbd7b91e496a93fd868b35aa5185aaded7f724ed79048ac2dd59",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "627b544cec588b70f841b876cfec26e095ea451d323c34059ba9a1f1c91dfdef"
+      }
+    }
+  }
 }

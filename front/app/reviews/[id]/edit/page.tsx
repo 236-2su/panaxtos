@@ -5,6 +5,8 @@ import { useRouter, useParams } from 'next/navigation';
 import { fetcher } from '@/lib/api';
 import useSWR from 'swr';
 
+export const runtime = 'edge';
+
 export default function EditReviewPage() {
     const router = useRouter();
     const params = useParams();

@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+
+export const runtime = 'edge';
 import { generateToken } from '@/lib/jwt';
 
 export async function POST(request: NextRequest) {

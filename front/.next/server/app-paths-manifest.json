@@ -7,7 +7,7 @@
   "/api/reservations/[id]/route": "app/api/reservations/[id]/route.js",
   "/api/reservations/route": "app/api/reservations/route.js",
   "/api/reviews/[id]/route": "app/api/reviews/[id]/route.js",
-  "/api/reviews/route": "app/api/reviews/route.js",
+  "/api/reviews/route": "app-edge-has-no-entrypoint",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/location/page": "app/location/page.js",
   "/login/page": "app/login/page.js",
