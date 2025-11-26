@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npx prisma generate && next build",
     "start": "next start",
     "crawl:full": "node ../scripts/crawlAll.js"
   },
   "dependencies": {
-    "@prisma/adapter-d1": "^7.0.1",
-    "@prisma/client": "^7.0.1",
+    "@prisma/adapter-d1": "^5.22.0",
+    "@prisma/client": "^5.22.0",
     "axios": "^1.13.2",
     "bcrypt": "^6.0.0",
     "jose": "^6.1.2",
