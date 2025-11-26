@@ -31,7 +31,7 @@ export async function PUT(
 ) {
     const { id } = await params;
     try {
-        const body = await request.json();
+        const body = await request.json() as any;
         // Expect password field for verification
         if (!body.password) {
             return NextResponse.json({ error: 'Password required' }, { status: 400 });
@@ -43,7 +43,7 @@ export async function PUT(
         if (!existingReview) {
             return NextResponse.json({ error: 'Not found' }, { status: 404 });
         }
-        if (existingReview.password !== body.password) {
+        if ((existingReview as any).password !== body.password) {
             return NextResponse.json({ error: 'Incorrect password' }, { status: 403 });
         }
         // Remove password from update payload to avoid overwriting it unintentionally
@@ -66,7 +66,7 @@ export async function DELETE(
 ) {
     const { id } = await params;
     try {
-        const body = await request.json();
+        const body = await request.json() as any;
         if (!body.password) {
             return NextResponse.json({ error: 'Password required' }, { status: 400 });
         }
@@ -77,7 +77,7 @@ export async function DELETE(
         if (!existingReview) {
             return NextResponse.json({ error: 'Not found' }, { status: 404 });
         }
-        if (existingReview.password !== body.password) {
+        if ((existingReview as any).password !== body.password) {
             return NextResponse.json({ error: 'Incorrect password' }, { status: 403 });
         }
         // Perform deletion

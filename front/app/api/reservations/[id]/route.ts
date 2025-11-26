@@ -41,7 +41,7 @@ export async function PUT(
 ) {
     const { id } = await params;
     try {
-        const body = await request.json();
+        const body = await request.json() as any;
         const token = getTokenFromRequest(request.headers.get('authorization'));
         const isAdmin = token && (await verifyToken(token));
         const password = body.password; // 요청 바디에서 비밀번호 확인
@@ -59,7 +59,7 @@ export async function PUT(
         if (isAdmin) {
             isPasswordCorrect = true;
         } else {
-            if (password && reservation.password === password) {
+            if (password && (reservation as any).password === password) {
                 isPasswordCorrect = true;
             }
         }
@@ -97,7 +97,7 @@ export async function DELETE(
         // Next.js에서는 Request body를 읽을 수 있음.
         let password = '';
         try {
-            const body = await request.json();
+            const body = await request.json() as any;
             password = body.password;
         } catch (e) {
             // Body가 없는 경우 (관리자 삭제 등)
@@ -119,7 +119,7 @@ export async function DELETE(
         if (isAdmin) {
             isPasswordCorrect = true;
         } else {
-            if (password && reservation.password === password) {
+            if (password && (reservation as any).password === password) {
                 isPasswordCorrect = true;
             }
         }

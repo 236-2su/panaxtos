@@ -32,14 +32,14 @@ export async function GET(request: NextRequest) {
 
         // 일반 사용자에게는 민감 정보 마스킹
         if (!isAdmin) {
-            reservations = reservations.map((r: any) => ({
+            reservations = (reservations as any[]).map((r: any) => ({
                 id: r.id,
                 branchId: r.branchId,
                 name: r.name.length > 1 ? r.name[0] + '*' + r.name.slice(2) : r.name, // 홍*동
                 dateTime: r.dateTime,
                 programId: r.programId,
                 // phone, notes, password 제외
-            }));
+            })) as any;
         }
 
         return NextResponse.json(reservations);
@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
 // POST /api/reservations - 예약 생성 (비밀번호 필수)
 export async function POST(request: NextRequest) {
     try {
-        const body = await request.json();
+        const body = await request.json() as any;
 
         // 유효성 검사
         if (!body.password || body.password.length < 4) {

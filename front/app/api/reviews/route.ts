@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
 // POST /api/reviews - 누구나 작성 가능
 export async function POST(request: NextRequest) {
     try {
-        const body = await request.json();
+        const body = await request.json() as any;
 
         // 유효성 검사
         if (!body.password || body.password.length < 4) {
