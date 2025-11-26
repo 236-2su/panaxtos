@@ -19,14 +19,36 @@ __turbopack_context__.s([
     ()=>prisma
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$prisma$2f$client$2f$default$2e$js__$5b$app$2d$edge$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@prisma/client/default.js [app-edge-route] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$prisma$2f$adapter$2d$d1$2f$dist$2f$index$2d$workerd$2e$mjs__$5b$app$2d$edge$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@prisma/adapter-d1/dist/index-workerd.mjs [app-edge-route] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$cloudflare$2f$next$2d$on$2d$pages$2f$dist$2f$api$2f$index$2e$js__$5b$app$2d$edge$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@cloudflare/next-on-pages/dist/api/index.js [app-edge-route] (ecmascript)");
+;
+;
 ;
 const globalForPrisma = /*TURBOPACK member replacement*/ __turbopack_context__.g;
-const prisma = globalForPrisma.prisma || new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$prisma$2f$client$2f$default$2e$js__$5b$app$2d$edge$2d$route$5d$__$28$ecmascript$29$__["PrismaClient"]({
-    log: [
-        'query'
-    ],
-    datasourceUrl: process.env.DATABASE_URL || 'file:./dev.db'
-});
+const makePrisma = ()=>{
+    try {
+        // Cloudflare 환경인지 확인 (Edge Runtime에서만 동작)
+        const ctx = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$cloudflare$2f$next$2d$on$2d$pages$2f$dist$2f$api$2f$index$2e$js__$5b$app$2d$edge$2d$route$5d$__$28$ecmascript$29$__["getRequestContext"])();
+        if (ctx && ctx.env && ctx.env.DB) {
+            console.log('Using D1 Database Adapter');
+            const adapter = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$prisma$2f$adapter$2d$d1$2f$dist$2f$index$2d$workerd$2e$mjs__$5b$app$2d$edge$2d$route$5d$__$28$ecmascript$29$__["PrismaD1"](ctx.env.DB);
+            return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$prisma$2f$client$2f$default$2e$js__$5b$app$2d$edge$2d$route$5d$__$28$ecmascript$29$__["PrismaClient"]({
+                adapter
+            });
+        }
+    } catch (e) {
+    // Edge Runtime이 아니거나 getRequestContext 실패 시 무시하고 로컬 DB 사용
+    }
+    console.log('Using Local SQLite File');
+    // 기본값: 로컬 파일 DB
+    return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$prisma$2f$client$2f$default$2e$js__$5b$app$2d$edge$2d$route$5d$__$28$ecmascript$29$__["PrismaClient"]({
+        log: [
+            'query'
+        ],
+        datasourceUrl: process.env.DATABASE_URL || 'file:./dev.db'
+    });
+};
+const prisma = globalForPrisma.prisma || makePrisma();
 if ("TURBOPACK compile-time truthy", 1) globalForPrisma.prisma = prisma;
 }),
 "[project]/ [app-edge-route] (unsupported edge import 'fs', ecmascript)", ((__turbopack_context__, module, exports) => {
