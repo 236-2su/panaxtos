@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
-import { getPrisma } from '@/lib/prisma';
+import { getDB, Branch } from '@/lib/d1';
 import { getTokenFromRequest, verifyToken } from '@/lib/jwt';
 
 // GET /api/branches/[id]
@@ -11,10 +11,8 @@ export async function GET(
 ) {
     const { id } = await params;
     try {
-        const prisma = getPrisma();
-        const branch = await prisma.branch.findUnique({
-            where: { id }
-        });
+        const db = getDB();
+        const branch = await db.prepare('SELECT * FROM Branch WHERE id = ?').bind(id).first<Branch>();
 
         if (!branch) {
             return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -22,6 +20,7 @@ export async function GET(
 
         return NextResponse.json(branch);
     } catch (error) {
+        console.error('[Branch GET]', error);
         return NextResponse.json(
             { error: 'Failed to fetch branch' },
             { status: 500 }
@@ -41,15 +40,32 @@ export async function PUT(
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
-        const body = await request.json();
-        const prisma = getPrisma();
-        const branch = await prisma.branch.update({
-            where: { id },
-            data: body
-        });
+        const body = await request.json() as any;
+        const db = getDB();
 
+        const result = await db.prepare(`
+            UPDATE Branch 
+            SET name = ?, directorName = ?, directorDesc = ?, directorImg = ?, address = ?, mapSrc = ?
+            WHERE id = ?
+        `).bind(
+            body.name,
+            body.directorName,
+            body.directorDesc || null,
+            body.directorImg || null,
+            body.address,
+            body.mapSrc || null,
+            id
+        ).run();
+
+        if (!result.success || result.meta.changes === 0) {
+            return NextResponse.json({ error: 'Not found' }, { status: 404 });
+        }
+
+        // 업데이트된 데이터 조회
+        const branch = await db.prepare('SELECT * FROM Branch WHERE id = ?').bind(id).first<Branch>();
         return NextResponse.json(branch);
     } catch (error) {
+        console.error('[Branch PUT]', error);
         return NextResponse.json(
             { error: 'Failed to update branch' },
             { status: 500 }
@@ -69,13 +85,16 @@ export async function DELETE(
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
-        const prisma = getPrisma();
-        await prisma.branch.delete({
-            where: { id }
-        });
+        const db = getDB();
+        const result = await db.prepare('DELETE FROM Branch WHERE id = ?').bind(id).run();
+
+        if (!result.success || result.meta.changes === 0) {
+            return NextResponse.json({ error: 'Not found' }, { status: 404 });
+        }
 
         return new NextResponse(null, { status: 204 });
     } catch (error) {
+        console.error('[Branch DELETE]', error);
         return NextResponse.json(
             { error: 'Failed to delete branch' },
             { status: 500 }

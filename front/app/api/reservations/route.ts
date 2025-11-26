@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
-import { getPrisma } from '@/lib/prisma';
+import { getDB, Reservation } from '@/lib/d1';
 import { getTokenFromRequest, verifyToken } from '@/lib/jwt';
 
 export const dynamic = 'force-dynamic';
@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
         const branchId = searchParams.get('branchId');
-        const isAdmin = searchParams.get('admin') === 'true'; // 관리자 모드 확인
+        const isAdmin = searchParams.get('admin') === 'true';
 
         // 관리자 요청인 경우 토큰 확인
         if (isAdmin) {
@@ -21,30 +21,38 @@ export async function GET(request: NextRequest) {
             }
         }
 
-        const prisma = getPrisma();
-        let reservations = await prisma.reservation.findMany({
-            where: {
-                ...(branchId ? { branchId } : {}),
-                // ...(isAdmin ? {} : { dateTime: { gte: new Date() } }) // 날짜 필터링 잠시 해제
-            },
-            orderBy: { dateTime: 'asc' }
-        });
+        const db = getDB();
+        let query: string;
+        let stmt;
 
-        // 일반 사용자에게는 민감 정보 마스킹
+        if (isAdmin) {
+            // 관리자: 모든 정보
+            query = branchId
+                ? 'SELECT * FROM Reservation WHERE branchId = ? ORDER BY dateTime ASC'
+                : 'SELECT * FROM Reservation ORDER BY dateTime ASC';
+            stmt = branchId ? db.prepare(query).bind(branchId) : db.prepare(query);
+        } else {
+            // 일반 사용자: 개인정보 마스킹
+            query = branchId
+                ? 'SELECT id, branchId, name, dateTime, programId FROM Reservation WHERE branchId = ? ORDER BY dateTime ASC'
+                : 'SELECT id, branchId, name, dateTime, programId FROM Reservation ORDER BY dateTime ASC';
+            stmt = branchId ? db.prepare(query).bind(branchId) : db.prepare(query);
+        }
+
+        const { results } = await stmt.all<any>();
+        let reservations = results || [];
+
+        // 일반 사용자에게는 이름 마스킹
         if (!isAdmin) {
-            reservations = (reservations as any[]).map((r: any) => ({
-                id: r.id,
-                branchId: r.branchId,
-                name: r.name.length > 1 ? r.name[0] + '*' + r.name.slice(2) : r.name, // 홍*동
-                dateTime: r.dateTime,
-                programId: r.programId,
-                // phone, notes, password 제외
-            })) as any;
+            reservations = reservations.map((r: any) => ({
+                ...r,
+                name: r.name.length > 1 ? r.name[0] + '*' + r.name.slice(2) : r.name
+            }));
         }
 
         return NextResponse.json(reservations);
     } catch (error) {
-        console.error(error);
+        console.error('[Reservations GET]', error);
         return NextResponse.json(
             { error: 'Failed to fetch reservations' },
             { status: 500 }
@@ -62,12 +70,32 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: '비밀번호는 4자리 이상이어야 합니다.' }, { status: 400 });
         }
 
-        const prisma = getPrisma();
-        const reservation = await prisma.reservation.create({ data: body });
+        const db = getDB();
+        const result = await db.prepare(`
+            INSERT INTO Reservation (branchId, name, phone, password, dateTime, notes, programId)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+            body.branchId,
+            body.name,
+            body.phone,
+            body.password,
+            body.dateTime,
+            body.notes || null,
+            body.programId || null
+        ).run();
+
+        if (!result.success) {
+            throw new Error('Failed to insert reservation');
+        }
+
+        // 생성된 예약 조회
+        const reservation = await db.prepare('SELECT * FROM Reservation WHERE id = ?')
+            .bind(result.meta.last_row_id)
+            .first<Reservation>();
 
         return NextResponse.json(reservation);
     } catch (error) {
-        console.error(error);
+        console.error('[Reservations POST]', error);
         return NextResponse.json(
             { error: 'Failed to create reservation' },
             { status: 500 }

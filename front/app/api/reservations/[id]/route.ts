@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
-import { getPrisma } from '@/lib/prisma';
+import { getDB, Reservation } from '@/lib/d1';
 import { getTokenFromRequest, verifyToken } from '@/lib/jwt';
 
-// GET /api/reservations/[id] - 관리자만 (상세 정보)
+// GET /api/reservations/[id] - 관리자만
 export async function GET(
     request: NextRequest,
     { params }: { params: Promise<{ id: string }> }
@@ -16,10 +16,10 @@ export async function GET(
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
-        const prisma = getPrisma();
-        const reservation = await prisma.reservation.findUnique({
-            where: { id: parseInt(id) }
-        });
+        const db = getDB();
+        const reservation = await db.prepare('SELECT * FROM Reservation WHERE id = ?')
+            .bind(parseInt(id))
+            .first<Reservation>();
 
         if (!reservation) {
             return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -27,6 +27,7 @@ export async function GET(
 
         return NextResponse.json(reservation);
     } catch (error) {
+        console.error('[Reservation GET]', error);
         return NextResponse.json(
             { error: 'Failed to fetch reservation' },
             { status: 500 }
@@ -44,40 +45,50 @@ export async function PUT(
         const body = await request.json() as any;
         const token = getTokenFromRequest(request.headers.get('authorization'));
         const isAdmin = token && (await verifyToken(token));
-        const password = body.password; // 요청 바디에서 비밀번호 확인
+        const password = body.password;
 
-        const prisma = getPrisma();
-        // 1. 기존 예약 조회
-        const reservation = await prisma.reservation.findUnique({ where: { id: parseInt(id) } });
+        const db = getDB();
+
+        // 기존 예약 조회
+        const reservation = await db.prepare('SELECT password FROM Reservation WHERE id = ?')
+            .bind(parseInt(id))
+            .first<{ password: string }>();
 
         if (!reservation) {
             return NextResponse.json({ error: 'Not found' }, { status: 404 });
         }
 
-        // 2. 권한 확인 (관리자 또는 비밀번호 일치)
-        let isPasswordCorrect = false;
-        if (isAdmin) {
-            isPasswordCorrect = true;
-        } else {
-            if (password && (reservation as any).password === password) {
-                isPasswordCorrect = true;
-            }
-        }
-
-        if (!isPasswordCorrect) {
+        // 권한 확인
+        if (!isAdmin && (!password || reservation.password !== password)) {
             return NextResponse.json({ error: '비밀번호가 일치하지 않습니다.' }, { status: 403 });
         }
 
-        // 3. 업데이트
-        // 비밀번호는 업데이트하지 않거나, 새 비밀번호가 있으면 업데이트 (여기서는 제외)
-        const { password: _, ...updateData } = body;
-        const updatedReservation = await prisma.reservation.update({
-            where: { id: parseInt(id) },
-            data: updateData
-        });
+        // 업데이트
+        const result = await db.prepare(`
+            UPDATE Reservation 
+            SET name = ?, phone = ?, dateTime = ?, notes = ?, programId = ?
+            WHERE id = ?
+        `).bind(
+            body.name,
+            body.phone,
+            body.dateTime,
+            body.notes || null,
+            body.programId || null,
+            parseInt(id)
+        ).run();
+
+        if (!result.success) {
+            throw new Error('Failed to update reservation');
+        }
+
+        // 업데이트된 예약 조회
+        const updatedReservation = await db.prepare('SELECT * FROM Reservation WHERE id = ?')
+            .bind(parseInt(id))
+            .first<Reservation>();
 
         return NextResponse.json(updatedReservation);
     } catch (error) {
+        console.error('[Reservation PUT]', error);
         return NextResponse.json(
             { error: 'Failed to update reservation' },
             { status: 500 }
@@ -92,47 +103,45 @@ export async function DELETE(
 ) {
     const { id } = await params;
     try {
-        // DELETE 요청은 body를 가질 수 있지만, 일부 클라이언트는 지원하지 않을 수 있음.
-        // 여기서는 헤더나 query param으로 비밀번호를 받을 수도 있지만, 
-        // Next.js에서는 Request body를 읽을 수 있음.
         let password = '';
         try {
             const body = await request.json() as any;
             password = body.password;
         } catch (e) {
-            // Body가 없는 경우 (관리자 삭제 등)
+            // Body가 없는 경우
         }
 
         const token = getTokenFromRequest(request.headers.get('authorization'));
         const isAdmin = token && (await verifyToken(token));
 
-        const prisma = getPrisma();
-        // 1. 기존 예약 조회 (비밀번호 확인용)
-        const reservation = await prisma.reservation.findUnique({ where: { id: parseInt(id) } });
+        const db = getDB();
+
+        // 기존 예약 조회
+        const reservation = await db.prepare('SELECT password FROM Reservation WHERE id = ?')
+            .bind(parseInt(id))
+            .first<{ password: string }>();
 
         if (!reservation) {
             return NextResponse.json({ error: 'Not found' }, { status: 404 });
         }
 
-        // 2. 권한 확인
-        let isPasswordCorrect = false;
-        if (isAdmin) {
-            isPasswordCorrect = true;
-        } else {
-            if (password && (reservation as any).password === password) {
-                isPasswordCorrect = true;
-            }
-        }
-
-        if (!isPasswordCorrect) {
+        // 권한 확인
+        if (!isAdmin && (!password || reservation.password !== password)) {
             return NextResponse.json({ error: '비밀번호가 일치하지 않습니다.' }, { status: 403 });
         }
 
-        // 3. 삭제
-        await prisma.reservation.delete({ where: { id: parseInt(id) } });
+        // 삭제
+        const result = await db.prepare('DELETE FROM Reservation WHERE id = ?')
+            .bind(parseInt(id))
+            .run();
+
+        if (!result.success) {
+            throw new Error('Failed to delete reservation');
+        }
 
         return new NextResponse(null, { status: 204 });
     } catch (error) {
+        console.error('[Reservation DELETE]', error);
         return NextResponse.json(
             { error: 'Failed to delete reservation' },
             { status: 500 }
