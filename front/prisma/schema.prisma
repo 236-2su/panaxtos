@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Branch {
+  id            String   @id
+  name          String
+  directorName  String
+  directorDesc  String?
+  directorImg   String?
+  address       String
+  mapSrc        String?
+  createdAt     DateTime @default(now())
+  
+  reviews       Review[]
+  reservations  Reservation[]
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  branchId  String
+  author    String
+  title     String?
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+  
+  branch    Branch   @relation(fields: [branchId], references: [id])
+}
+
+model Reservation {
+  id        Int      @id @default(autoincrement())
+  branchId  String
+  name      String
+  phone     String
+  dateTime  DateTime
+  notes     String?
+  programId String?
+  createdAt DateTime @default(now())
+  
+  branch    Branch   @relation(fields: [branchId], references: [id])
+}

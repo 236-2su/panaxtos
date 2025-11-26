@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff') format('woff');
+  font-weight: 100;
+  font-display: swap;
+}
+
+body {
+  color: var(--text-main);
+  background: var(--bg-main);
+  font-family: 'Pretendard', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.default-container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.4;
+  font-weight: 300;
+}

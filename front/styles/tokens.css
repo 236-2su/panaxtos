@@ -1,0 +1,45 @@
+:root {
+  /* Brand Colors */
+  --color-primary: #0f172a; /* Slate 900 */
+  --color-primary-light: #334155; /* Slate 700 */
+  --color-accent: #38bdf8; /* Sky 400 */
+  --color-accent-glow: rgba(56, 189, 248, 0.5);
+
+  /* Backgrounds */
+  --bg-main: #ffffff;
+  --bg-secondary: #f8fafc; /* Slate 50 */
+  --bg-card: #ffffff;
+  
+  /* Text */
+  --text-main: #0f172a;
+  --text-secondary: #64748b; /* Slate 500 */
+  --text-invert: #ffffff;
+
+  /* Borders */
+  --border-color: #e2e8f0; /* Slate 200 */
+
+  /* Spacing & Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #f8fafc;
+    --color-primary-light: #cbd5e1;
+    --color-accent: #0ea5e9; /* Sky 500 */
+    
+    --bg-main: #020617; /* Slate 950 */
+    --bg-secondary: #0f172a; /* Slate 900 */
+    --bg-card: #1e293b; /* Slate 800 */
+    
+    --text-main: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-invert: #0f172a;
+
+    --border-color: #334155;
+  }
+}
