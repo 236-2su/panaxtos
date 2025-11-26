@@ -7,6 +7,9 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
     steps:
       - uses: actions/checkout@v4
 
@@ -17,11 +20,11 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./front
-        run: npm ci
+        run: npm install
 
-      - name: Build
+      - name: Build with next-on-pages
         working-directory: ./front
-        run: npm run build
+        run: npx @cloudflare/next-on-pages@1
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -29,4 +32,5 @@ jobs:
           apiToken: ${{ secrets.CF_PAGES_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: panaxtos
-          directory: ./front/out
+          directory: ./front/.vercel/output/static
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
