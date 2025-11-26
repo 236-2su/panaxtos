@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
         // 관리자 요청인 경우 토큰 확인
         if (isAdmin) {
             const token = getTokenFromRequest(request.headers.get('authorization'));
-            if (!token || !verifyToken(token)) {
+            if (!token || !(await verifyToken(token))) {
                 return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
             }
         }

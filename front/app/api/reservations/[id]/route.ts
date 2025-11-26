@@ -12,7 +12,7 @@ export async function GET(
     const { id } = await params;
     try {
         const token = getTokenFromRequest(request.headers.get('authorization'));
-        if (!token || !verifyToken(token)) {
+        if (!token || !(await verifyToken(token))) {
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
@@ -42,7 +42,7 @@ export async function PUT(
     try {
         const body = await request.json();
         const token = getTokenFromRequest(request.headers.get('authorization'));
-        const isAdmin = token && verifyToken(token);
+        const isAdmin = token && (await verifyToken(token));
         const password = body.password; // 요청 바디에서 비밀번호 확인
 
         // 1. 기존 예약 조회
@@ -102,7 +102,7 @@ export async function DELETE(
         }
 
         const token = getTokenFromRequest(request.headers.get('authorization'));
-        const isAdmin = token && verifyToken(token);
+        const isAdmin = token && (await verifyToken(token));
 
         // 1. 기존 예약 조회 (비밀번호 확인용)
         const reservation = await prisma.reservation.findUnique({ where: { id: parseInt(id) } });

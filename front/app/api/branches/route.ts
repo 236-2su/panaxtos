@@ -21,7 +21,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
     try {
         const token = getTokenFromRequest(request.headers.get('authorization'));
-        if (!token || !verifyToken(token)) {
+        if (!token || !(await verifyToken(token))) {
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 

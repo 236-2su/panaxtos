@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'PanaxtosJinju2024!';
 
         if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-            const token = generateToken(username);
+            const token = await generateToken(username);
             return NextResponse.json({ token });
         }
 

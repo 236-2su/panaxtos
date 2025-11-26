@@ -36,7 +36,7 @@ export async function PUT(
     const { id } = await params;
     try {
         const token = getTokenFromRequest(request.headers.get('authorization'));
-        if (!token || !verifyToken(token)) {
+        if (!token || !(await verifyToken(token))) {
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
@@ -63,7 +63,7 @@ export async function DELETE(
     const { id } = await params;
     try {
         const token = getTokenFromRequest(request.headers.get('authorization'));
-        if (!token || !verifyToken(token)) {
+        if (!token || !(await verifyToken(token))) {
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
