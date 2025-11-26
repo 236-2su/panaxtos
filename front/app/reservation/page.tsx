@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import ReservationClient from './ReservationClient';
 
 export const dynamic = 'force-dynamic';
-// export const runtime = 'edge'; // Removed to fix 500 error on page load
+export const runtime = 'edge';
 
 export default function ReservationPage() {
     return (
