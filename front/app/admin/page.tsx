@@ -45,7 +45,11 @@ export default function AdminDashboard() {
         const token = localStorage.getItem('token');
         try {
             await axios.delete(`/api/reviews/${id}`, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                data: {} // 빈 객체라도 보내야 API에서 request.json() 파싱 가능
             });
             alert('후기가 삭제되었습니다.');
             setReviews(reviews.filter((r: any) => r.id !== id));
@@ -60,7 +64,11 @@ export default function AdminDashboard() {
         const token = localStorage.getItem('token');
         try {
             await axios.delete(`/api/reservations/${id}`, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                data: {} // 빈 객체라도 보내야 API에서 request.json() 파싱 가능
             });
             alert('예약이 삭제되었습니다.');
             setReservations(reservations.filter((r: any) => r.id !== id));

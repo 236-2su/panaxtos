@@ -71,7 +71,18 @@ export const onRequestDelete: PagesFunction<Env> = async (context) => {
     try {
         const { params, request, env } = context;
         const id = params.id as string;
-        const body = await request.json() as any;
+
+        // body가 없을 수도 있으므로 안전하게 파싱
+        let body: any = {};
+        try {
+            const text = await request.text();
+            if (text) {
+                body = JSON.parse(text);
+            }
+        } catch (e) {
+            // body 파싱 실패 시 빈 객체 사용
+        }
+
         const db = env.DB;
 
         // 관리자 권한 확인 (Authorization 헤더 체크)
