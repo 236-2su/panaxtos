@@ -74,17 +74,23 @@ export const onRequestDelete: PagesFunction<Env> = async (context) => {
         const body = await request.json() as any;
         const db = env.DB;
 
-        // 비밀번호 확인
-        const existingReview = await db.prepare('SELECT password FROM Review WHERE id = ?')
-            .bind(id)
-            .first<any>();
+        // 관리자 권한 확인 (Authorization 헤더 체크)
+        const authHeader = request.headers.get('Authorization');
+        const isAdmin = authHeader && authHeader.includes('admin-secret-token-12345');
 
-        if (!existingReview) {
-            return Response.json({ error: 'Review not found' }, { status: 404 });
-        }
+        if (!isAdmin) {
+            // 비밀번호 확인
+            const existingReview = await db.prepare('SELECT password FROM Review WHERE id = ?')
+                .bind(id)
+                .first<any>();
 
-        if (existingReview.password !== body.password) {
-            return Response.json({ error: '비밀번호가 일치하지 않습니다.' }, { status: 403 });
+            if (!existingReview) {
+                return Response.json({ error: 'Review not found' }, { status: 404 });
+            }
+
+            if (existingReview.password !== body.password) {
+                return Response.json({ error: '비밀번호가 일치하지 않습니다.' }, { status: 403 });
+            }
         }
 
         // 삭제
