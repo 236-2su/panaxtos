@@ -53,8 +53,10 @@ export default function AdminDashboard() {
             });
             alert('후기가 삭제되었습니다.');
             setReviews(reviews.filter((r: any) => r.id !== id));
-        } catch (err) {
-            alert('삭제 실패');
+        } catch (err: any) {
+            console.error('Delete review error:', err);
+            console.error('Error response:', err.response);
+            alert(`삭제 실패: ${err.response?.data?.error || err.message || '알 수 없는 오류'}`);
         }
     };
 
@@ -72,8 +74,10 @@ export default function AdminDashboard() {
             });
             alert('예약이 삭제되었습니다.');
             setReservations(reservations.filter((r: any) => r.id !== id));
-        } catch (err) {
-            alert('삭제 실패');
+        } catch (err: any) {
+            console.error('Delete reservation error:', err);
+            console.error('Error response:', err.response);
+            alert(`삭제 실패: ${err.response?.data?.error || err.message || '알 수 없는 오류'}`);
         }
     };
 
