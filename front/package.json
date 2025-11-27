@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "npx prisma generate && next build",
+    "build": "next build",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy",
     "start": "next start",
     "crawl:full": "node ../scripts/crawlAll.js"
   },
@@ -32,6 +35,7 @@
     "prisma": "^5.22.0",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vercel": "^39.2.8",
     "wrangler": "^4.50.0"
   }
 }
