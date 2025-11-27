@@ -71,44 +71,58 @@ export const onRequestDelete: PagesFunction<Env> = async (context) => {
     try {
         const { params, request, env } = context;
         const id = params.id as string;
+        console.log(`[Review DELETE /${id}] Start`);
 
         // body가 없을 수도 있으므로 안전하게 파싱
         let body: any = {};
         try {
             const text = await request.text();
+            console.log(`[Review DELETE /${id}] Request body text:`, text);
             if (text) {
                 body = JSON.parse(text);
+                console.log(`[Review DELETE /${id}] Parsed body:`, body);
+            } else {
+                console.log(`[Review DELETE /${id}] Body is empty`);
             }
-        } catch (e) {
-            // body 파싱 실패 시 빈 객체 사용
+        } catch (e: any) {
+            console.error(`[Review DELETE /${id}] Body parsing error:`, e.message);
         }
 
         const db = env.DB;
 
         // 관리자 권한 확인 (Authorization 헤더 체크)
         const authHeader = request.headers.get('Authorization');
+        console.log(`[Review DELETE /${id}] Auth header:`, authHeader);
         const isAdmin = authHeader && authHeader.includes('admin-secret-token-12345');
+        console.log(`[Review DELETE /${id}] isAdmin:`, isAdmin);
 
         if (!isAdmin) {
             // 비밀번호 확인
+            console.log(`[Review DELETE /${id}] Not admin, checking password`);
             const existingReview = await db.prepare('SELECT password FROM Review WHERE id = ?')
                 .bind(id)
                 .first<any>();
 
             if (!existingReview) {
+                console.log(`[Review DELETE /${id}] Review not found`);
                 return Response.json({ error: 'Review not found' }, { status: 404 });
             }
 
             if (existingReview.password !== body.password) {
+                console.log(`[Review DELETE /${id}] Password mismatch`);
                 return Response.json({ error: '비밀번호가 일치하지 않습니다.' }, { status: 403 });
             }
+        } else {
+            console.log(`[Review DELETE /${id}] Admin access, skipping password check`);
         }
 
         // 삭제
+        console.log(`[Review DELETE /${id}] Deleting review`);
         await db.prepare('DELETE FROM Review WHERE id = ?')
             .bind(id)
             .run();
 
+        console.log(`[Review DELETE /${id}] Success`);
         return Response.json({ success: true });
     } catch (error: any) {
         console.error('[Review DELETE] Error:', error);
