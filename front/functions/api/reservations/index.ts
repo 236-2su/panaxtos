@@ -10,6 +10,16 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         const isAdmin = url.searchParams.get('admin') === 'true';
 
         const db = env.DB;
+
+        // 과거 예약 자동 삭제 (현재 시간보다 1시간 이상 지난 예약)
+        const now = new Date();
+        const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000); // 1시간 전
+        const isoOneHourAgo = oneHourAgo.toISOString();
+
+        await db.prepare('DELETE FROM Reservation WHERE dateTime < ?')
+            .bind(isoOneHourAgo)
+            .run();
+
         let query: string;
         let stmt: D1PreparedStatement;
 
