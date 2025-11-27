@@ -59,11 +59,20 @@ export default function ReservationClient() {
         }
     };
 
-    const handleDelete = async (id: number) => {
-        const password = prompt('예약 시 설정한 비밀번호를 입력해주세요.');
-        if (!password) return;
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
+    const [password, setPassword] = useState('');
+    const [selectedReservationId, setSelectedReservationId] = useState<number | null>(null);
+
+    const handleDeleteClick = (id: number) => {
+        setSelectedReservationId(id);
+        setShowPasswordModal(true);
+    };
+
+    const handleDeleteConfirm = async () => {
+        if (!password || !selectedReservationId) return;
+
         try {
-            await fetcher(`/api/reservations/${id}`, {
+            await fetcher(`/api/reservations/${selectedReservationId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password }),
@@ -71,6 +80,9 @@ export default function ReservationClient() {
             alert('예약이 취소되었습니다.');
             // 강제로 데이터 재검증
             await mutate(`/api/reservations?branchId=${branchId}`, undefined, { revalidate: true });
+            setShowPasswordModal(false);
+            setPassword('');
+            setSelectedReservationId(null);
         } catch (error: any) {
             alert(error.response?.data?.error || '예약 취소에 실패했습니다. 비밀번호를 확인해주세요.');
         }
@@ -103,7 +115,7 @@ export default function ReservationClient() {
                                     value={formData.name}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:outline-none"
-                                    placeholder="홍길동"
+                                    placeholder="예약자 성함"
                                 />
                             </div>
                             <div>
@@ -119,7 +131,7 @@ export default function ReservationClient() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium mb-1">비밀번호 (수정/취소용)</label>
+                                <label className="block text-sm font-medium mb-1">비밀번호 (확인/취소용)</label>
                                 <input
                                     type="password"
                                     name="password"
@@ -127,86 +139,93 @@ export default function ReservationClient() {
                                     value={formData.password}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:outline-none"
-                                    placeholder="4자리 이상"
-                                    minLength={4}
+                                    placeholder="비밀번호 4자리 이상"
                                 />
                             </div>
-                            <div className="grid grid-cols-2 gap-2">
-                                <div>
-                                    <label className="block text-sm font-medium mb-1">날짜</label>
-                                    <input
-                                        type="date"
-                                        name="date"
-                                        required
-                                        min={today}
-                                        value={formData.date}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:outline-none"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium mb-1">시간</label>
-                                    <select
-                                        name="time"
-                                        required
-                                        value={formData.time}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:outline-none"
-                                    >
-                                        <option value="">선택</option>
-                                        {[10, 11, 13, 14, 15, 16, 17, 18].map((hour) => (
-                                            <option key={hour} value={`${hour}:00`}>{`${hour}:00`}</option>
-                                        ))}
-                                    </select>
-                                </div>
+                            <div>
+                                <label className="block text-sm font-medium mb-1">예약 날짜</label>
+                                <input
+                                    type="date"
+                                    name="date"
+                                    required
+                                    min={today}
+                                    value={formData.date}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:outline-none"
+                                />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium mb-1">문의사항 (선택)</label>
+                                <label className="block text-sm font-medium mb-1">예약 시간</label>
+                                <select
+                                    name="time"
+                                    required
+                                    value={formData.time}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:outline-none"
+                                >
+                                    <option value="">시간 선택</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium mb-1">비고</label>
                                 <textarea
                                     name="notes"
                                     rows={3}
                                     value={formData.notes}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:outline-none resize-none"
+                                    placeholder="문의사항이 있으시면 남겨주세요."
                                 />
                             </div>
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full py-3 rounded-lg font-bold text-white transition-all hover:opacity-90 disabled:opacity-50"
+                                className="w-full py-3 rounded-lg font-bold text-white transition-all hover:opacity-90 disabled:opacity-50 mt-4"
                                 style={{ background: 'var(--color-accent)' }}
                             >
-                                {isSubmitting ? '처리 중...' : '예약 신청하기'}
+                                {isSubmitting ? '처리중...' : '예약 신청하기'}
                             </button>
                         </form>
                     </div>
+
                     {/* 예약 현황 리스트 */}
-                    <div className="rounded-2xl p-8 shadow-lg h-fit" style={{ background: 'white', border: '1px solid var(--border-color)' }}>
+                    <div className="rounded-2xl p-8 shadow-lg h-fit" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)' }}>
                         <h2 className="text-xl font-bold mb-6">예약 현황</h2>
-                        <p className="text-sm text-gray-500 mb-4">* 개인정보 보호를 위해 이름 일부가 가려집니다.</p>
-                        {!reservations ? (
-                            <p>로딩 중...</p>
-                        ) : reservations.length === 0 ? (
+                        {reservations.length === 0 ? (
                             <p className="text-gray-500 text-center py-8">현재 예약된 일정이 없습니다.</p>
                         ) : (
                             <ul className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
                                 {reservations.map((res: any) => (
-                                    <li key={res.id} className="p-4 rounded-lg border border-gray-100 hover:shadow-md transition-shadow bg-gray-50">
-                                        <div className="flex justify-between items-start mb-2">
+                                    <li key={res.id} className="p-4 rounded-lg border border-gray-100 hover:shadow-md transition-shadow bg-white">
+                                        <div className="flex justify-between items-start">
                                             <div>
-                                                <span className="font-bold text-lg mr-2">{res.name}</span>
-                                                <span className="text-sm px-2 py-1 rounded bg-blue-100 text-blue-800">예약중</span>
+                                                <div className="font-bold text-lg mb-1" style={{ color: 'var(--text-main)' }}>
+                                                    {new Date(res.dateTime).toLocaleDateString()} {new Date(res.dateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                                </div>
+                                                <div className="text-sm text-gray-600">
+                                                    예약자: {res.name}
+                                                </div>
+                                                {res.programId && (
+                                                    <div className="text-xs text-blue-600 mt-1 bg-blue-50 inline-block px-2 py-1 rounded">
+                                                        {res.programId}
+                                                    </div>
+                                                )}
                                             </div>
                                             <button
-                                                onClick={() => handleDelete(res.id)}
-                                                className="text-xs text-red-500 hover:underline"
+                                                onClick={() => handleDeleteClick(res.id)}
+                                                className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                                                title="예약 취소"
                                             >
-                                                예약 취소
+                                                ✕
                                             </button>
-                                        </div>
-                                        <div className="text-gray-600">
-                                            <p className="flex items-center gap-2">📅 {new Date(res.dateTime).toLocaleDateString()}</p>
-                                            <p className="flex items-center gap-2">⏰ {new Date(res.dateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                                         </div>
                                     </li>
                                 ))}
@@ -214,6 +233,42 @@ export default function ReservationClient() {
                         )}
                     </div>
                 </div>
+
+                {/* 비밀번호 확인 모달 */}
+                {showPasswordModal && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                        <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-xl">
+                            <h3 className="text-lg font-bold mb-4">예약 취소</h3>
+                            <p className="text-gray-600 mb-4 text-sm">예약 취소를 위해 설정한 비밀번호를 입력해주세요.</p>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full border p-2 rounded mb-4"
+                                placeholder="비밀번호 입력"
+                                autoFocus
+                            />
+                            <div className="flex justify-end gap-2">
+                                <button
+                                    onClick={() => {
+                                        setShowPasswordModal(false);
+                                        setPassword('');
+                                        setSelectedReservationId(null);
+                                    }}
+                                    className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
+                                >
+                                    닫기
+                                </button>
+                                <button
+                                    onClick={handleDeleteConfirm}
+                                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                                >
+                                    취소하기
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import { fetcher } from '@/lib/api';
 import Link from 'next/link';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 
 interface Review {
     id: number;
@@ -26,9 +26,18 @@ function ReviewDetailContent() {
         fetcher
     );
 
-    const handleDelete = async () => {
-        const password = prompt('후기 작성 시 설정한 비밀번호를 입력해주세요.');
-        if (!password) return;
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
+    const [password, setPassword] = useState('');
+
+    const handleDeleteClick = () => {
+        setShowPasswordModal(true);
+    };
+
+    const handleDeleteConfirm = async () => {
+        if (!password) {
+            alert('비밀번호를 입력해주세요.');
+            return;
+        }
 
         try {
             await fetcher(`/api/reviews/${id}`, {
@@ -88,7 +97,7 @@ function ReviewDetailContent() {
                             수정
                         </button>
                         <button
-                            onClick={handleDelete}
+                            onClick={handleDeleteClick}
                             className="px-3 py-1 text-sm border border-red-200 text-red-600 rounded hover:bg-red-50"
                         >
                             삭제
@@ -142,6 +151,41 @@ function ReviewDetailContent() {
                         </p>
                     </div>
                 </article>
+
+                {/* 비밀번호 확인 모달 */}
+                {showPasswordModal && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                        <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-xl">
+                            <h3 className="text-lg font-bold mb-4">비밀번호 확인</h3>
+                            <p className="text-gray-600 mb-4 text-sm">후기 삭제를 위해 작성 시 설정한 비밀번호를 입력해주세요.</p>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full border p-2 rounded mb-4"
+                                placeholder="비밀번호 입력"
+                                autoFocus
+                            />
+                            <div className="flex justify-end gap-2">
+                                <button
+                                    onClick={() => {
+                                        setShowPasswordModal(false);
+                                        setPassword('');
+                                    }}
+                                    className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
+                                >
+                                    취소
+                                </button>
+                                <button
+                                    onClick={handleDeleteConfirm}
+                                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                                >
+                                    삭제하기
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 <div className="mt-12 text-center p-8 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl">
                     <h3 className="text-2xl font-bold mb-4">무료 상담을 받아보세요</h3>
