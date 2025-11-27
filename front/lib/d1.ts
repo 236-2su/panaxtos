@@ -36,13 +36,34 @@ export interface D1ExecResult {
 export function getDB(): D1Database {
     try {
         const context = getRequestContext();
-        if (!context?.env?.DB) {
-            throw new Error('D1 database binding not found');
+
+        // 디버깅을 위한 로깅
+        console.log('[D1] Request context:', {
+            hasContext: !!context,
+            hasEnv: !!context?.env,
+            hasDB: !!context?.env?.DB,
+            envKeys: context?.env ? Object.keys(context.env) : []
+        });
+
+        if (!context) {
+            throw new Error('Request context is undefined - are you running in Cloudflare Pages?');
         }
+
+        if (!context.env) {
+            throw new Error('Environment bindings not found in context');
+        }
+
+        if (!context.env.DB) {
+            throw new Error('D1 database binding "DB" not found. Available bindings: ' + Object.keys(context.env).join(', '));
+        }
+
         return context.env.DB as D1Database;
-    } catch (error) {
-        console.error('[D1] Failed to get database:', error);
-        throw new Error('Database connection failed');
+    } catch (error: any) {
+        console.error('[D1] Failed to get database:', {
+            message: error?.message,
+            stack: error?.stack
+        });
+        throw new Error(`Database connection failed: ${error?.message || 'Unknown error'}`);
     }
 }
 

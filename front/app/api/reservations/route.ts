@@ -21,6 +21,7 @@ export async function GET(request: NextRequest) {
             }
         }
 
+        // Cloudflare Pages에서 DB 가져오기
         const db = getDB();
         let query: string;
         let stmt;
@@ -51,10 +52,17 @@ export async function GET(request: NextRequest) {
         }
 
         return NextResponse.json(reservations);
-    } catch (error) {
-        console.error('[Reservations GET]', error);
+    } catch (error: any) {
+        console.error('[Reservations GET] Error details:', {
+            message: error?.message,
+            stack: error?.stack,
+            name: error?.name,
+        });
         return NextResponse.json(
-            { error: 'Failed to fetch reservations' },
+            {
+                error: 'Failed to fetch reservations',
+                details: error?.message || 'Unknown error'
+            },
             { status: 500 }
         );
     }
