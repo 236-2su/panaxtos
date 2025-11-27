@@ -5,7 +5,7 @@ import useSWR from 'swr';
 import { fetcher } from '@/lib/api';
 import Link from 'next/link';
 
-export const runtime = 'edge';
+
 
 interface Review {
     id: number;
