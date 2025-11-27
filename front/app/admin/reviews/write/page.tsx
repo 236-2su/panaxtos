@@ -27,7 +27,7 @@ export default function WriteReview() {
                 comment: form.content,
                 rating: form.rating,
                 password: form.password, // 비밀번호 전송
-                branchId: 'jinju-center'
+                branchId: 'jinju'
             });
             alert('후기가 등록되었습니다.');
             router.push('/admin'); // 관리자 대시보드로 이동

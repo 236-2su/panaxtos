@@ -12,7 +12,7 @@ export default function WriteReviewPage() {
         password: '',
         content: '',
         rating: 5,
-        branchId: 'jinju-center' // 기본값
+        branchId: 'jinju' // 기본값
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 

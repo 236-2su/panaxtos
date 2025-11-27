@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function AboutPage() {
     // 진주 지사 ID 고정
-    const BRANCH_ID = 'jinju-center';
+    const BRANCH_ID = 'jinju';
 
     const { branch, isLoading: branchLoading, isError: branchError } = useBranch(BRANCH_ID);
     const { reviews, isLoading: reviewsLoading } = useReviews(BRANCH_ID);

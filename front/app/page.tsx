@@ -148,7 +148,7 @@ export default function Home() {
             센터 소개
           </Link>
           <Link
-            href="/reservation?branch=jinju-center"
+            href="/reservation?branch=jinju"
             className="px-10 py-4 rounded text-lg font-semibold transition-all hover:opacity-90 hover:shadow-lg"
             style={{ background: 'var(--color-accent)', color: 'var(--text-invert)' }}
           >

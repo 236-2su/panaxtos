@@ -10,7 +10,7 @@ import { fetcher } from '@/lib/api';
 export default function ReservationClient() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const branchId = searchParams.get('branch') || 'jinju-center';
+    const branchId = searchParams.get('branch') || 'jinju';
 
     const [formData, setFormData] = useState({
         name: '',

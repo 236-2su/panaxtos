@@ -4,7 +4,7 @@ import { useReviews } from '@/hooks/useReviews';
 import Link from 'next/link';
 
 export default function ReviewsPage() {
-    const BRANCH_ID = 'jinju-center';
+    const BRANCH_ID = 'jinju';
     const { reviews, isLoading } = useReviews(BRANCH_ID);
 
     return (
