@@ -9,9 +9,6 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         const branchId = url.searchParams.get('branchId');
         const isAdmin = url.searchParams.get('admin') === 'true';
 
-        // 관리자 인증 로직은 일단 생략하거나 헤더에서 확인
-        // const authHeader = request.headers.get('Authorization');
-
         const db = env.DB;
         let query: string;
         let stmt: D1PreparedStatement;
@@ -40,6 +37,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
         return Response.json(reservations);
     } catch (error: any) {
+        console.error('[Reservations GET] Error:', error);
         return Response.json({ error: error.message }, { status: 500 });
     }
 };
@@ -49,34 +47,63 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         const { request, env } = context;
         const body = await request.json() as any;
 
+        console.log('[Reservations POST] Received:', JSON.stringify(body));
+
+        // Validation
+        if (!body.branchId) {
+            return Response.json({ error: 'branchId is required' }, { status: 400 });
+        }
+        if (!body.name) {
+            return Response.json({ error: 'name is required' }, { status: 400 });
+        }
         if (!body.password || body.password.length < 4) {
             return Response.json({ error: '비밀번호는 4자리 이상이어야 합니다.' }, { status: 400 });
         }
 
         const db = env.DB;
+
         const result = await db.prepare(`
       INSERT INTO Reservation (branchId, name, phone, password, dateTime, notes, programId)
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `).bind(
             body.branchId,
             body.name,
-            body.phone,
+            body.phone || '',
             body.password,
             body.dateTime,
             body.notes || null,
             body.programId || null
         ).run();
 
+        console.log('[Reservations POST] Result:', JSON.stringify({
+            success: result.success,
+            meta: result.meta
+        }));
+
         if (!result.success) {
             throw new Error('Failed to insert reservation');
         }
 
+        // D1에서 last_row_id 가져오기
+        const lastId = result.meta?.last_row_id;
+        if (!lastId) {
+            console.error('[Reservations POST] No last_row_id returned');
+            return Response.json({
+                success: true,
+                message: 'Reservation created successfully'
+            }, { status: 201 });
+        }
+
         const reservation = await db.prepare('SELECT * FROM Reservation WHERE id = ?')
-            .bind(result.meta.last_row_id)
+            .bind(lastId)
             .first();
 
-        return Response.json(reservation);
+        return Response.json(reservation, { status: 201 });
     } catch (error: any) {
-        return Response.json({ error: error.message }, { status: 500 });
+        console.error('[Reservations POST] Error:', error.message);
+        return Response.json({
+            error: 'Server error',
+            details: error.message
+        }, { status: 500 });
     }
 };
