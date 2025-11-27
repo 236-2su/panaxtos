@@ -1,19 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
+    images: {
+        unoptimized: true,
+    },
     typescript: {
         ignoreBuildErrors: true,
     },
     eslint: {
         ignoreDuringBuilds: true,
-    },
-    webpack: (config, { isServer }) => {
-        if (!isServer) {
-            config.resolve.fallback = {
-                ...config.resolve.fallback,
-                async_hooks: false,
-            };
-        }
-        return config;
     },
 };
 
