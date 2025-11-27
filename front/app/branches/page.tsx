@@ -76,7 +76,7 @@ export default function BranchesPage() {
 
                                     <div className="flex gap-2">
                                         <Link
-                                            href={`/branches/${branch.id}`}
+                                            href={`/branches/view?id=${branch.id}`}
                                             className="flex-1 py-2 px-4 rounded-lg text-center font-semibold transition-all hover:opacity-90"
                                             style={{ background: 'var(--color-accent)', color: 'var(--text-invert)' }}
                                         >

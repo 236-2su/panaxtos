@@ -46,7 +46,7 @@ export default function ReviewsPage() {
                         {reviews.map((review) => (
                             <Link
                                 key={review.id}
-                                href={`/reviews/${review.id}`}
+                                href={`/reviews/view?id=${review.id}`}
                                 className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer"
                             >
                                 {/* 별점 */}

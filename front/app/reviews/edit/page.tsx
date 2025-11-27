@@ -1,16 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter, useParams } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { fetcher } from '@/lib/api';
 import useSWR from 'swr';
 
-
-
-export default function EditReviewPage() {
+function EditReviewContent() {
     const router = useRouter();
-    const params = useParams();
-    const id = params.id;
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
 
     const { data: review, error } = useSWR<any>(id ? `/api/reviews/${id}` : null, fetcher);
 
@@ -55,7 +53,7 @@ export default function EditReviewPage() {
             });
 
             alert('후기가 수정되었습니다.');
-            router.push(`/reviews/${id}`);
+            router.push(`/reviews/view?id=${id}`);
         } catch (error: any) {
             alert(error.response?.data?.error || '후기 수정에 실패했습니다. 비밀번호를 확인해주세요.');
         } finally {
@@ -63,6 +61,7 @@ export default function EditReviewPage() {
         }
     };
 
+    if (!id) return <div className="text-center py-20">잘못된 접근입니다.</div>;
     if (error) return <div className="text-center py-20">후기를 불러오는데 실패했습니다.</div>;
     if (!review) return <div className="text-center py-20">로딩 중...</div>;
 
@@ -161,5 +160,13 @@ export default function EditReviewPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function EditReviewPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <EditReviewContent />
+        </Suspense>
     );
 }

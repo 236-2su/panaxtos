@@ -1,11 +1,10 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import { fetcher } from '@/lib/api';
 import Link from 'next/link';
-
-
+import { Suspense } from 'react';
 
 interface Review {
     id: number;
@@ -17,11 +16,13 @@ interface Review {
     createdAt: string;
 }
 
-export default function ReviewDetailPage() {
-    const params = useParams();
+function ReviewDetailContent() {
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
     const router = useRouter();
+
     const { data: review, isLoading, error } = useSWR<Review>(
-        `/api/reviews/${params.id}`,
+        id ? `/api/reviews/${id}` : null,
         fetcher
     );
 
@@ -30,7 +31,7 @@ export default function ReviewDetailPage() {
         if (!password) return;
 
         try {
-            await fetcher(`/api/reviews/${params.id}`, {
+            await fetcher(`/api/reviews/${id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password })
@@ -43,8 +44,10 @@ export default function ReviewDetailPage() {
     };
 
     const handleEdit = () => {
-        router.push(`/reviews/${params.id}/edit`);
+        router.push(`/reviews/edit?id=${id}`);
     };
+
+    if (!id) return <div className="text-center py-20">잘못된 접근입니다.</div>;
 
     if (isLoading) {
         return (
@@ -155,5 +158,13 @@ export default function ReviewDetailPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function ReviewDetailPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ReviewDetailContent />
+        </Suspense>
     );
 }

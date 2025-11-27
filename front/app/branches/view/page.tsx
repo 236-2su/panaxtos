@@ -3,11 +3,17 @@
 import { useBranch } from '@/hooks/useBranches';
 import { useReviews } from '@/hooks/useReviews';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default function BranchDetailPage({ params }: { params: { id: string } }) {
-    const { id } = params;
-    const { branch, isLoading: branchLoading, isError: branchError } = useBranch(id);
-    const { reviews, isLoading: reviewsLoading } = useReviews(id);
+function BranchDetailContent() {
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
+
+    const { branch, isLoading: branchLoading, isError: branchError } = useBranch(id || '');
+    const { reviews, isLoading: reviewsLoading } = useReviews(id || '');
+
+    if (!id) return <div className="text-center py-20">잘못된 접근입니다.</div>;
 
     if (branchLoading) {
         return (
@@ -132,5 +138,13 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function BranchDetailPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <BranchDetailContent />
+        </Suspense>
     );
 }
