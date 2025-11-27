@@ -39,61 +39,54 @@ export default function AdminDashboard() {
         }
     };
 
-    const handleDeleteReview = async (id: number) => {
-        console.log('handleDeleteReview called with id:', id);
-        if (!confirm('정말 이 후기를 삭제하시겠습니까?')) {
-            console.log('Delete cancelled by user');
-            return;
-        }
+    // 삭제 모달 상태
+    const [deleteModal, setDeleteModal] = useState<{
+        isOpen: boolean;
+        type: 'review' | 'reservation' | null;
+        id: number | null;
+    }>({
+        isOpen: false,
+        type: null,
+        id: null
+    });
 
-        const token = localStorage.getItem('token');
-        console.log('Token:', token);
-        try {
-            console.log('Sending DELETE request to /api/reviews/' + id);
-            const response = await axios.delete(`/api/reviews/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                data: {} // 빈 객체라도 보내야 API에서 request.json() 파싱 가능
-            });
-            console.log('Delete response:', response);
-            alert('후기가 삭제되었습니다.');
-            // 페이지 새로고침으로 확실하게 업데이트
-            window.location.reload();
-        } catch (err: any) {
-            console.error('Delete review error:', err);
-            console.error('Error response:', err.response);
-            alert(`삭제 실패: ${err.response?.data?.error || err.message || '알 수 없는 오류'}`);
-        }
+    const openDeleteModal = (type: 'review' | 'reservation', id: number) => {
+        setDeleteModal({ isOpen: true, type, id });
     };
 
-    const handleDeleteReservation = async (id: number) => {
-        console.log('handleDeleteReservation called with id:', id);
-        if (!confirm('정말 이 예약을 삭제하시겠습니까?')) {
-            console.log('Delete cancelled by user');
-            return;
-        }
+    const closeDeleteModal = () => {
+        setDeleteModal({ isOpen: false, type: null, id: null });
+    };
 
+    const confirmDelete = async () => {
+        if (!deleteModal.id || !deleteModal.type) return;
+
+        const { type, id } = deleteModal;
         const token = localStorage.getItem('token');
-        console.log('Token:', token);
+
         try {
-            console.log('Sending DELETE request to /api/reservations/' + id);
-            const response = await axios.delete(`/api/reservations/${id}`, {
+            const endpoint = type === 'review' ? `/api/reviews/${id}` : `/api/reservations/${id}`;
+            await axios.delete(endpoint, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
-                data: {} // 빈 객체라도 보내야 API에서 request.json() 파싱 가능
+                data: {}
             });
-            console.log('Delete response:', response);
-            alert('예약이 삭제되었습니다.');
-            // 페이지 새로고침으로 확실하게 업데이트
-            window.location.reload();
+
+            alert(type === 'review' ? '후기가 삭제되었습니다.' : '예약이 삭제되었습니다.');
+
+            // 상태 업데이트
+            if (type === 'review') {
+                setReviews(reviews.filter((r: any) => r.id !== id));
+            } else {
+                setReservations(reservations.filter((r: any) => r.id !== id));
+            }
         } catch (err: any) {
-            console.error('Delete reservation error:', err);
-            console.error('Error response:', err.response);
+            console.error('Delete error:', err);
             alert(`삭제 실패: ${err.response?.data?.error || err.message || '알 수 없는 오류'}`);
+        } finally {
+            closeDeleteModal();
         }
     };
 
@@ -146,7 +139,7 @@ export default function AdminDashboard() {
                                                     <p className="text-blue-600 font-bold">{new Date(res.dateTime).toLocaleString()}</p>
                                                     <p className="text-gray-500 mb-1">{res.programId || '상담 예약'}</p>
                                                     <button
-                                                        onClick={() => handleDeleteReservation(res.id)}
+                                                        onClick={() => openDeleteModal('reservation', res.id)}
                                                         className="text-red-500 text-sm hover:underline"
                                                     >
                                                         삭제
@@ -182,7 +175,7 @@ export default function AdminDashboard() {
                                             <div className="flex justify-between items-start mb-2">
                                                 <h3 className="font-bold text-lg line-clamp-1">{review.title}</h3>
                                                 <button
-                                                    onClick={() => handleDeleteReview(review.id)}
+                                                    onClick={() => openDeleteModal('review', review.id)}
                                                     className="text-red-500 text-sm hover:underline shrink-0 ml-2"
                                                 >
                                                     삭제
@@ -200,6 +193,34 @@ export default function AdminDashboard() {
                     )}
                 </div>
             </div>
+
+            {/* 삭제 확인 모달 */}
+            {deleteModal.isOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-xl">
+                        <h3 className="text-lg font-bold mb-4">삭제 확인</h3>
+                        <p className="text-gray-600 mb-6">
+                            정말 이 {deleteModal.type === 'review' ? '후기를' : '예약을'} 삭제하시겠습니까?
+                            <br />
+                            <span className="text-sm text-red-500">이 작업은 되돌릴 수 없습니다.</span>
+                        </p>
+                        <div className="flex justify-end gap-2">
+                            <button
+                                onClick={closeDeleteModal}
+                                className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
+                            >
+                                취소
+                            </button>
+                            <button
+                                onClick={confirmDelete}
+                                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                            >
+                                삭제하기
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
