@@ -40,19 +40,27 @@ export default function AdminDashboard() {
     };
 
     const handleDeleteReview = async (id: number) => {
-        if (!confirm('정말 이 후기를 삭제하시겠습니까?')) return;
+        console.log('handleDeleteReview called with id:', id);
+        if (!confirm('정말 이 후기를 삭제하시겠습니까?')) {
+            console.log('Delete cancelled by user');
+            return;
+        }
 
         const token = localStorage.getItem('token');
+        console.log('Token:', token);
         try {
-            await axios.delete(`/api/reviews/${id}`, {
+            console.log('Sending DELETE request to /api/reviews/' + id);
+            const response = await axios.delete(`/api/reviews/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 data: {} // 빈 객체라도 보내야 API에서 request.json() 파싱 가능
             });
+            console.log('Delete response:', response);
             alert('후기가 삭제되었습니다.');
-            setReviews(reviews.filter((r: any) => r.id !== id));
+            // 페이지 새로고침으로 확실하게 업데이트
+            window.location.reload();
         } catch (err: any) {
             console.error('Delete review error:', err);
             console.error('Error response:', err.response);
@@ -61,19 +69,27 @@ export default function AdminDashboard() {
     };
 
     const handleDeleteReservation = async (id: number) => {
-        if (!confirm('정말 이 예약을 삭제하시겠습니까?')) return;
+        console.log('handleDeleteReservation called with id:', id);
+        if (!confirm('정말 이 예약을 삭제하시겠습니까?')) {
+            console.log('Delete cancelled by user');
+            return;
+        }
 
         const token = localStorage.getItem('token');
+        console.log('Token:', token);
         try {
-            await axios.delete(`/api/reservations/${id}`, {
+            console.log('Sending DELETE request to /api/reservations/' + id);
+            const response = await axios.delete(`/api/reservations/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 data: {} // 빈 객체라도 보내야 API에서 request.json() 파싱 가능
             });
+            console.log('Delete response:', response);
             alert('예약이 삭제되었습니다.');
-            setReservations(reservations.filter((r: any) => r.id !== id));
+            // 페이지 새로고침으로 확실하게 업데이트
+            window.location.reload();
         } catch (err: any) {
             console.error('Delete reservation error:', err);
             console.error('Error response:', err.response);
