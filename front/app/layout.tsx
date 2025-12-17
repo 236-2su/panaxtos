@@ -18,9 +18,9 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <Header />
-        <div className="default-container pb-20">
+        <main className="pb-20">
           {children}
-        </div>
+        </main>
         <Footer />
       </body>
     </html>
