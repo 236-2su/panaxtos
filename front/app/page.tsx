@@ -23,7 +23,7 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       {/* 1. Hero Section: Full Width & Immersive */}
       <section className="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 w-full h-full">
           <Image
             src="/images/center/living_room.png"
             alt="센터 메인 전경"
@@ -84,7 +84,7 @@ export default function Home() {
               { title: '전문적인 심리 상담', desc: '풍부한 임상 경험의 센터장이 직접 케어합니다.', img: '/images/center/counsel_room.png', link: '/about' }
             ].map((item, idx) => (
               <Link href={item.link} key={idx} className="block group">
-                <div className="relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+                <div className="relative w-full h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
                   <Image
                     src={item.img}
                     alt={item.title}
@@ -147,7 +147,7 @@ export default function Home() {
           >
             {/* 1. ADHD */}
             <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
                 <Image
                   src="/images/programs/adhd_focus_child.png"
                   alt="ADHD 집중력 훈련"
@@ -167,7 +167,7 @@ export default function Home() {
 
             {/* 2. Insomnia/Emotion */}
             <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
                 <Image
                   src="/images/programs/sleep_calm_woman.png"
                   alt="불면증 및 정서조절"
@@ -187,7 +187,7 @@ export default function Home() {
 
             {/* 3. Brain Development */}
             <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
                 <Image
                   src="/images/programs/brain_development_student.png"
                   alt="뇌기능 발달"
@@ -207,7 +207,7 @@ export default function Home() {
 
             {/* 4. Dementia Prevention */}
             <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
                 <Image
                   src="/images/programs/dementia_prevention_senior.png"
                   alt="치매 예방"
@@ -227,7 +227,7 @@ export default function Home() {
 
             {/* 5. Stress Relief */}
             <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
                 <Image
                   src="/images/programs/office_stress_relief.png"
                   alt="스트레스 케어"
