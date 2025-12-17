@@ -21,13 +21,13 @@ export default function LocationPage() {
                     {/* 카카오맵 정적 지도 이미지 (API 키 없이 가장 확실한 방법) */}
                     {/* 좌표: 35.165487, 128.057398 (진주시 순환로 529) */}
                     <a
-                        href="https://map.kakao.com/link/map/파낙토스진주센터,35.165487,128.057398"
+                        href="https://map.kakao.com/?q=%ED%8C%8C%EB%82%99%ED%86%A0%EC%8A%A4IBC%ED%86%B5%ED%95%A9%EB%87%8C%EC%84%BC%ED%84%B0%20%EC%A7%84%EC%A3%BC%EC%84%BC%ED%84%B0"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block w-full h-full"
                     >
                         <iframe
-                            src="https://map.kakao.com/link/map/파낙토스진주센터,35.165487,128.057398"
+                            src="https://map.kakao.com/?q=%ED%8C%8C%EB%82%99%ED%86%A0%EC%8A%A4IBC%ED%86%B5%ED%95%A9%EB%87%8C%EC%84%BC%ED%84%B0%20%EC%A7%84%EC%A3%BC%EC%84%BC%ED%84%B0"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
@@ -41,7 +41,7 @@ export default function LocationPage() {
                     {/* 지도 위 오버레이 버튼 (바로가기) */}
                     <div className="absolute bottom-4 right-4 z-10 pointer-events-auto">
                         <a
-                            href="https://map.kakao.com/link/to/파낙토스진주센터,35.165487,128.057398"
+                            href="https://map.kakao.com/?q=%ED%8C%8C%EB%82%99%ED%86%A0%EC%8A%A4IBC%ED%86%B5%ED%95%A9%EB%87%8C%EC%84%BC%ED%84%B0%20%EC%A7%84%EC%A3%BC%EC%84%BC%ED%84%B0"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 px-6 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition-transform"
