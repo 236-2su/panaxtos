@@ -79,31 +79,30 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: '과학적인 뇌파 검사', desc: '최신 측정 장비를 통해 두뇌 상태를 정밀 분석합니다.', img: '/images/center/analyze_room.png', link: '/programs' },
-              { title: '맞춤형 훈련 프로그램', desc: '개인별 뇌 특성에 맞는 최적의 솔루션을 설계합니다.', img: '/images/center/play_room.png', link: '/programs' },
-              { title: '전문적인 심리 상담', desc: '풍부한 임상 경험의 센터장이 직접 케어합니다.', img: '/images/center/counsel_room.png', link: '/about' }
+              { title: '과학적인 뇌파 검사', desc: '최신 측정 장비를 통해 두뇌 상태를 정밀 분석합니다.', img: '/images/center/analyze_room.png' },
+              { title: '맞춤형 훈련 프로그램', desc: '개인별 뇌 특성에 맞는 최적의 솔루션을 설계합니다.', img: '/images/center/play_room.png' },
+              { title: '전문적인 심리 상담', desc: '풍부한 임상 경험의 센터장이 직접 케어합니다.', img: '/images/center/counsel_room.png' }
             ].map((item, idx) => (
-              <Link href={item.link} key={idx} className="block group">
-                <div className="relative w-full h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+              <div key={idx} className="block">
+                <div className="relative w-full h-80 rounded-2xl overflow-hidden shadow-lg transition-all">
                   <Image
                     src={item.img}
                     alt={item.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="object-cover transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#00305B]/90 via-[#00305B]/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity"></div>
-                  <div className="absolute bottom-0 left-0 p-8 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="w-12 h-1 bg-[#EF9300] mb-4 w-0 group-hover:w-12 transition-all duration-300 delay-100"></div>
-                    <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#00305B]/90 via-[#00305B]/40 to-transparent opacity-90"></div>
+                  <div className="absolute bottom-0 left-0 p-8 text-white">
+                    <div className="w-12 h-1 bg-[#EF9300] mb-4"></div>
+                    <h3 className="text-2xl font-bold mb-2">
                       {item.title}
-                      <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2">↗</span>
                     </h3>
-                    <p className="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 line-clamp-2">
+                    <p className="text-gray-200 text-sm line-clamp-2">
                       {item.desc}
                     </p>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -146,104 +145,99 @@ export default function Home() {
             className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth"
           >
             {/* 1. ADHD */}
-            <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+            <div className="flex-none w-[85vw] md:w-[350px] snap-center">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
                   src="/images/programs/adhd_focus_child.png"
                   alt="ADHD 집중력 훈련"
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-[#EF9300] transition-colors">ADHD / 집중력</h3>
+                  <h3 className="text-2xl font-bold mb-3">ADHD / 집중력</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     산만함을 줄이고 자기조절능력을 키워 학습 효율을 높입니다.
                   </p>
-                  <div className="mt-6 inline-flex items-center text-sm font-bold border-b border-[#EF9300] pb-1">자세히 보기 &rarr;</div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* 2. Insomnia/Emotion */}
-            <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+            <div className="flex-none w-[85vw] md:w-[350px] snap-center">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
                   src="/images/programs/sleep_calm_woman.png"
                   alt="불면증 및 정서조절"
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-[#EF9300] transition-colors">불면 / 우울 / 불안</h3>
+                  <h3 className="text-2xl font-bold mb-3">불면 / 우울 / 불안</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     뇌파 안정을 통해 정서적 편안함과 깊은 수면을 되찾습니다.
                   </p>
-                  <div className="mt-6 inline-flex items-center text-sm font-bold border-b border-[#EF9300] pb-1">자세히 보기 &rarr;</div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* 3. Brain Development */}
-            <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+            <div className="flex-none w-[85vw] md:w-[350px] snap-center">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
                   src="/images/programs/brain_development_student.png"
                   alt="뇌기능 발달"
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-[#EF9300] transition-colors">뇌기능 발달</h3>
+                  <h3 className="text-2xl font-bold mb-3">뇌기능 발달</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     두뇌의 정보처리 속도와 기억력을 향상시켜 학습 능력을 극대화합니다.
                   </p>
-                  <div className="mt-6 inline-flex items-center text-sm font-bold border-b border-[#EF9300] pb-1">자세히 보기 &rarr;</div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* 4. Dementia Prevention */}
-            <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+            <div className="flex-none w-[85vw] md:w-[350px] snap-center">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
                   src="/images/programs/dementia_prevention_senior.png"
                   alt="치매 예방"
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-[#EF9300] transition-colors">치매 예방</h3>
+                  <h3 className="text-2xl font-bold mb-3">치매 예방</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     전두엽 기능을 활성화하여 인지 기능 저하를 막고 뇌 건강을 지킵니다.
                   </p>
-                  <div className="mt-6 inline-flex items-center text-sm font-bold border-b border-[#EF9300] pb-1">자세히 보기 &rarr;</div>
                 </div>
               </div>
-            </Link>
+            </div>
 
             {/* 5. Stress Relief */}
-            <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
-              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
+            <div className="flex-none w-[85vw] md:w-[350px] snap-center">
+              <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
                   src="/images/programs/office_stress_relief.png"
                   alt="스트레스 케어"
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-[#EF9300] transition-colors">스트레스 케어</h3>
+                  <h3 className="text-2xl font-bold mb-3">스트레스 케어</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     만성 피로와 번아웃을 해소하고 활기찬 일상을 회복합니다.
                   </p>
-                  <div className="mt-6 inline-flex items-center text-sm font-bold border-b border-[#EF9300] pb-1">자세히 보기 &rarr;</div>
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       </section>

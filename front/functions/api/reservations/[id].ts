@@ -29,7 +29,7 @@ export const onRequestDelete: PagesFunction<Env> = async (context) => {
         const authHeader = request.headers.get('Authorization');
         console.log(`[Reservation DELETE /${id}] Auth header:`, authHeader);
         // 실제로는 JWT 검증 등을 해야 하지만, 여기서는 간단히 토큰 존재 여부와 특정 값 확인
-        const isAdmin = authHeader && authHeader.includes('admin-secret-token-12345');
+        const isAdmin = authHeader && authHeader.includes('secure_admin_token_12345');
         console.log(`[Reservation DELETE /${id}] isAdmin:`, isAdmin);
 
         if (!isAdmin) {

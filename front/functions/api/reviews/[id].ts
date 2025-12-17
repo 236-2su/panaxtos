@@ -93,7 +93,7 @@ export const onRequestDelete: PagesFunction<Env> = async (context) => {
         // 관리자 권한 확인 (Authorization 헤더 체크)
         const authHeader = request.headers.get('Authorization');
         console.log(`[Review DELETE /${id}] Auth header:`, authHeader);
-        const isAdmin = authHeader && authHeader.includes('admin-secret-token-12345');
+        const isAdmin = authHeader && authHeader.includes('secure_admin_token_12345');
         console.log(`[Review DELETE /${id}] isAdmin:`, isAdmin);
 
         if (!isAdmin) {
