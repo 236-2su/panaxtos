@@ -25,7 +25,7 @@ export default function Home() {
       <section className="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/center/living room.png"
+            src="/images/center/living_room.png"
             alt="센터 메인 전경"
             fill
             className="object-cover"
@@ -79,9 +79,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: '과학적인 뇌파 검사', desc: '최신 측정 장비를 통해 두뇌 상태를 정밀 분석합니다.', img: '/images/center/analayze room.png', link: '/programs' },
-              { title: '맞춤형 훈련 프로그램', desc: '개인별 뇌 특성에 맞는 최적의 솔루션을 설계합니다.', img: '/images/center/play room.png', link: '/programs' },
-              { title: '전문적인 심리 상담', desc: '풍부한 임상 경험의 센터장이 직접 케어합니다.', img: '/images/center/counsel room.png', link: '/about' }
+              { title: '과학적인 뇌파 검사', desc: '최신 측정 장비를 통해 두뇌 상태를 정밀 분석합니다.', img: '/images/center/analyze_room.png', link: '/programs' },
+              { title: '맞춤형 훈련 프로그램', desc: '개인별 뇌 특성에 맞는 최적의 솔루션을 설계합니다.', img: '/images/center/play_room.png', link: '/programs' },
+              { title: '전문적인 심리 상담', desc: '풍부한 임상 경험의 센터장이 직접 케어합니다.', img: '/images/center/counsel_room.png', link: '/about' }
             ].map((item, idx) => (
               <Link href={item.link} key={idx} className="block group">
                 <div className="relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
@@ -109,7 +109,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Programs Section - Carousel with Arrows & Custom Images */}
+      {/* 3. Programs Section - Carousel with Arrows (Above) & Hidden Scrollbar */}
       <section className="py-24 bg-[#F5F8FA] overflow-hidden relative">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -118,21 +118,21 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-[#00305B]">
                 맞춤형 뇌 훈련 프로그램
               </h2>
-              <p className="mt-4 text-gray-500">증상별 맞춤 이미지를 확인해보세요.</p>
+              <p className="mt-4 text-gray-500">증상별 맞춤 프로그램을 확인해보세요.</p>
             </div>
 
-            {/* Navigation Buttons */}
-            <div className="flex gap-2 mt-4 md:mt-0">
+            {/* Navigation Buttons (Positioned Top Right) */}
+            <div className="flex gap-2 mt-6 md:mt-0 z-10">
               <button
                 onClick={scrollLeft}
-                className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#00305B] hover:text-white hover:border-transparent transition-all bg-white shadow-sm"
+                className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#00305B] hover:text-white hover:border-transparent transition-all bg-white shadow-sm active:scale-95"
                 aria-label="이전 프로그램"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
               </button>
               <button
                 onClick={scrollRight}
-                className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#00305B] hover:text-white hover:border-transparent transition-all bg-white shadow-sm"
+                className="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#00305B] hover:text-white hover:border-transparent transition-all bg-white shadow-sm active:scale-95"
                 aria-label="다음 프로그램"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
@@ -140,20 +140,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scroll Container */}
+          {/* Scroll Container (Scrollbar Hidden) */}
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
+            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth"
           >
             {/* 1. ADHD */}
             <Link href="/programs" className="flex-none w-[85vw] md:w-[350px] snap-center">
               <div className="relative h-[450px] rounded-[2rem] overflow-hidden shadow-md group hover:shadow-xl transition-all hover:-translate-y-2 cursor-pointer">
                 <Image
-                  // Use the generated ADHD image path (copy to public folder needed, but assuming path works if served)
-                  // For now, in Next.js public folder, assume I moved them. 
-                  // In this environment, since I can't move files easily between agent dirs, I will use absolute path workaround or assume they are in public.
-                  // Actually, I need to use the paths I saved them to. Wait, browser can't access .gemini hidden folder.
-                  // I MUST move them to public folder first. I will assume I do that in next step. For now I put placeholder path.
                   src="/images/programs/adhd_focus_child.png"
                   alt="ADHD 집중력 훈련"
                   fill
@@ -291,7 +286,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="bg-[#00305B] text-white py-20 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('/images/center/play room.png')] bg-cover bg-center bg-fixed"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('/images/center/play_room.png')] bg-cover bg-center bg-fixed"></div>
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">변화는 뇌에서 시작됩니다</h2>
           <Link

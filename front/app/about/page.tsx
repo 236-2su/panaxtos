@@ -211,7 +211,7 @@ export default function AboutPage() {
                                         <div className="absolute bottom-0 left-0 bg-white/90 px-4 py-2 m-4 rounded-lg text-sm font-bold shadow-sm">안내 데스크</div>
                                     </div>
                                     <div className="aspect-[4/3] relative rounded-xl overflow-hidden shadow-md group">
-                                        <Image src="/images/center/living room.png" alt="메인 대기실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                        <Image src="/images/center/living_room.png" alt="메인 대기실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                                         <div className="absolute bottom-0 left-0 bg-white/90 px-4 py-2 m-4 rounded-lg text-sm font-bold shadow-sm">메인 라운지</div>
                                     </div>
                                     <div className="aspect-[4/3] relative rounded-xl overflow-hidden shadow-md group">
@@ -237,14 +237,14 @@ export default function AboutPage() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="bg-white p-4 rounded-2xl shadow-sm">
                                         <div className="aspect-video relative rounded-xl overflow-hidden mb-4 group">
-                                            <Image src="/images/center/counsel room.png" alt="제1상담실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                            <Image src="/images/center/counsel_room.png" alt="제1상담실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                                         </div>
                                         <h3 className="text-lg font-bold text-[#00305B]">제1상담실</h3>
                                         <p className="text-sm text-gray-500">편안하고 프라이빗한 분위기에서 깊이 있는 대화를 나눕니다.</p>
                                     </div>
                                     <div className="bg-white p-4 rounded-2xl shadow-sm">
                                         <div className="aspect-video relative rounded-xl overflow-hidden mb-4 group">
-                                            <Image src="/images/center/analayze room.png" alt="뇌파 검사실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                            <Image src="/images/center/analyze_room.png" alt="뇌파 검사실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                                         </div>
                                         <h3 className="text-lg font-bold text-[#00305B]">뇌파 검사실</h3>
                                         <p className="text-sm text-gray-500">최신 장비를 통해 정밀한 두뇌 기능 분석을 진행합니다.</p>
@@ -263,7 +263,7 @@ export default function AboutPage() {
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     <div className="aspect-square relative rounded-xl overflow-hidden shadow-md group">
-                                        <Image src="/images/center/play room.png" alt="놀이치료실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                        <Image src="/images/center/play_room.png" alt="놀이치료실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                                         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white translate-y-2 group-hover:translate-y-0 transition-transform">
                                             <p className="font-bold text-lg">놀이치료실</p>
                                             <p className="text-xs opacity-80 mt-1">아이들을 위한 즐거운 공간</p>
@@ -278,7 +278,7 @@ export default function AboutPage() {
                                     </div>
                                     <div className="aspect-square relative rounded-xl overflow-hidden shadow-md group">
                                         {/* Another angle of counsel or play room if available, reusing counsel room 1 style for variety */}
-                                        <Image src="/images/center/counsel room1.png" alt="다목적실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                        <Image src="/images/center/counsel_room1.png" alt="다목적실" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                                         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white translate-y-2 group-hover:translate-y-0 transition-transform">
                                             <p className="font-bold text-lg">다목적 치료실</p>
                                             <p className="text-xs opacity-80 mt-1">다양한 활동이 가능한 공간</p>
