@@ -1,6 +1,11 @@
 {
+  "/api/reservations/route": "app/api/reservations/route.js",
   "/page": "app/page.js",
+  "/programs/page": "app/programs/page.js",
+  "/location/page": "app/location/page.js",
   "/_not-found/page": "app/_not-found/page.js",
+  "/reviews/page": "app/reviews/page.js",
+  "/reservation/page": "app/reservation/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/about/page": "app/about/page.js"
 }
