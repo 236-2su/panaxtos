@@ -14,17 +14,40 @@ export default function LocationPage() {
                 </div>
 
                 {/* 지도 영역 (더미) */}
-                <div className="w-full h-96 rounded-2xl mb-12 flex items-center justify-center bg-gray-200">
-                    <div className="text-center">
-                        <p className="text-2xl font-bold text-gray-500 mb-2">지도 영역</p>
-                        <p className="text-gray-400">카카오맵/네이버맵 API 연동 필요</p>
+                {/* 지도 영역 */}
+                {/* 지도 영역 */}
+                {/* 지도 영역 */}
+                <div className="w-full h-96 rounded-2xl mb-12 overflow-hidden relative shadow-lg bg-gray-100 border border-gray-200">
+                    {/* 카카오맵 정적 지도 이미지 (API 키 없이 가장 확실한 방법) */}
+                    {/* 좌표: 35.165487, 128.057398 (진주시 순환로 529) */}
+                    <a
+                        href="https://map.kakao.com/link/map/파낙토스진주센터,35.165487,128.057398"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full h-full"
+                    >
+                        <iframe
+                            src="https://map.kakao.com/link/map/파낙토스진주센터,35.165487,128.057398"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            title="파낙토스 진주센터 지도"
+                        ></iframe>
+                        {/* Iframe이 차단될 경우를 대비한 클릭 유도 오버레이 */}
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/5 hover:bg-black/0 transition-colors pointer-events-none">
+                        </div>
+                    </a>
+
+                    {/* 지도 위 오버레이 버튼 (바로가기) */}
+                    <div className="absolute bottom-4 right-4 z-10 pointer-events-auto">
                         <a
-                            href="https://map.kakao.com/"
+                            href="https://map.kakao.com/link/to/파낙토스진주센터,35.165487,128.057398"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                            className="flex items-center gap-2 px-6 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition-transform"
+                            style={{ background: '#FEE500', color: '#191919' }}
                         >
-                            카카오맵에서 보기 (임시 링크)
+                            <span>📍 카카오맵으로 길찾기</span>
                         </a>
                     </div>
                 </div>
@@ -35,10 +58,10 @@ export default function LocationPage() {
                             <span>📍</span> 주소
                         </h3>
                         <p className="text-lg mb-2" style={{ color: 'var(--text-main)' }}>
-                            경상남도 진주시 충무공동 123-45
+                            경남 진주시 순환로 529, 영성빌딩 501호
                         </p>
                         <p className="text-base" style={{ color: 'var(--text-secondary)' }}>
-                            (진주혁신도시 LH 본사 맞은편 건물 3층)
+                            (카카오맵/네이버 지도 '파낙토스 진주센터' 검색)
                         </p>
                     </div>
 
@@ -47,10 +70,11 @@ export default function LocationPage() {
                             <span>📞</span> 연락처
                         </h3>
                         <p className="text-lg mb-2" style={{ color: 'var(--text-main)' }}>
-                            055-123-4567
+                            055-920-2937
                         </p>
                         <p className="text-base" style={{ color: 'var(--text-secondary)' }}>
-                            상담 가능 시간: 평일 10:00 - 19:00
+                            평일 10:00 - 19:00 (점심시간 12:00 ~ 13:30)<br />
+                            일요일, 월요일, 공휴일 휴무
                         </p>
                     </div>
 
@@ -59,8 +83,7 @@ export default function LocationPage() {
                             <span>🚗</span> 주차 안내
                         </h3>
                         <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>
-                            건물 지하 주차장을 이용하실 수 있습니다.<br />
-                            (상담 및 훈련 고객 2시간 무료 주차권 제공)
+                            건물 옆 유료 주차장을 이용하실 수 있습니다.
                         </p>
                     </div>
 
@@ -69,8 +92,7 @@ export default function LocationPage() {
                             <span>🚌</span> 대중교통
                         </h3>
                         <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>
-                            LH 본사 정류장 하차 후 도보 3분<br />
-                            (버스 노선: 100, 150, 200번 등)
+                            평거동 10호광장, 탑마트 정류장 하차
                         </p>
                     </div>
                 </div>

@@ -27,6 +27,16 @@ export default function FloatingSidebar() {
                     <span className="text-2xl">📍</span>
                 </Link>
 
+                {/* 전화 문의 */}
+                <a
+                    href="tel:055-920-2937"
+                    className="flex items-center justify-center w-16 h-16 rounded-full shadow-2xl hover:scale-110 transition-all"
+                    style={{ background: '#007BFF', color: 'white' }}
+                    title="전화 문의"
+                >
+                    <span className="text-2xl">📞</span>
+                </a>
+
                 {/* AS 신청 */}
                 <a
                     href="https://www.panaxtos.com/m_view.php?mk=cust_notice&ps_boid=277"

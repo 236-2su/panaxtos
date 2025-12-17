@@ -16,8 +16,11 @@ body {
 }
 
 .default-container {
-  width: 1280px;
+  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 0 1rem;
+  /* 모바일에서 좌우 여백 확보 */
 }
 
 h1 {

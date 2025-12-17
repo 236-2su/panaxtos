@@ -58,7 +58,7 @@ export default function LoginPage() {
                     </button>
                 </form>
                 <div className="mt-4 text-center text-sm text-gray-500">
-                    <p>초기 계정: admin / PanaxtosJinju2024!</p>
+                    <p className="text-xs">관리자 전용 페이지입니다.</p>
                 </div>
             </div>
         </div>

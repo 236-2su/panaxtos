@@ -107,10 +107,10 @@ export default function AdminDashboard() {
                 </button>
             </div>
 
-            <div className="flex gap-4 mb-8">
+            <div className="flex gap-4 mb-8 justify-end">
                 <button
                     onClick={() => router.push('/admin/reviews/write')}
-                    className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 font-bold"
+                    className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 font-bold shadow-md transition-all"
                 >
                     + 훈련 후기 작성하기
                 </button>
