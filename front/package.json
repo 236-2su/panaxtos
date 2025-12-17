@@ -27,13 +27,13 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20251126.0",
-    "@tailwindcss/postcss": "^4",
+    "autoprefixer": "^10.4.19",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "prisma": "^5.10.2",
-    "tailwindcss": "^4",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "vercel": "^39.2.8",
     "wrangler": "^3.57.1"
