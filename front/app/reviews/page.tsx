@@ -20,8 +20,7 @@ export default function ReviewsPage() {
                     </p>
                     <Link
                         href="/reviews/write"
-                        className="inline-block px-6 py-3 rounded-lg font-bold text-white transition-all hover:opacity-90 shadow-md"
-                        style={{ background: 'var(--color-accent)' }}
+                        className="inline-block px-6 py-3 rounded-lg font-bold text-white bg-[#EF9300] transition-all hover:opacity-90 shadow-md"
                     >
                         📝 후기 작성하기
                     </Link>
@@ -97,8 +96,7 @@ export default function ReviewsPage() {
                     </p>
                     <Link
                         href="/reservation"
-                        className="inline-block px-8 py-4 rounded-lg font-bold text-white transition-all hover:scale-105 shadow-lg"
-                        style={{ background: 'var(--color-accent)' }}
+                        className="inline-block px-8 py-4 rounded-lg font-bold text-white bg-[#EF9300] transition-all hover:scale-105 shadow-lg"
                     >
                         상담 예약하기 →
                     </Link>

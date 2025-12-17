@@ -255,7 +255,7 @@ export default function ReservationClient() {
                                         setPassword('');
                                         setSelectedReservationId(null);
                                     }}
-                                    className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
+                                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"
                                 >
                                     닫기
                                 </button>

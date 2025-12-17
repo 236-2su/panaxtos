@@ -125,7 +125,7 @@ export default function WriteReviewPage() {
                             <button
                                 type="button"
                                 onClick={() => router.back()}
-                                className="w-1/3 py-4 rounded-lg font-bold border border-gray-300 hover:bg-gray-50 transition-colors"
+                                className="w-1/3 py-4 rounded-lg font-bold border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
                             >
                                 취소
                             </button>
@@ -133,7 +133,7 @@ export default function WriteReviewPage() {
                                 type="submit"
                                 disabled={isSubmitting}
                                 className="w-2/3 py-4 rounded-lg font-bold text-white transition-all hover:opacity-90 disabled:opacity-50"
-                                style={{ background: 'var(--color-accent)' }}
+                                className="w-2/3 py-4 rounded-lg font-bold text-white bg-[#EF9300] transition-all hover:opacity-90 disabled:opacity-50"
                             >
                                 {isSubmitting ? '등록 중...' : '후기 등록하기'}
                             </button>
