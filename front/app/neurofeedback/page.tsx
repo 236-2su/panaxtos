@@ -155,8 +155,8 @@ const NeurofeedbackPage = () => {
             <section className="relative h-[300px] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0">
                     <Image
-                        src="/images/renewal/hero.png"
-                        alt="Neurofeedback Hero"
+                        src="/images/center/table.png"
+                        alt="Neurofeedback"
                         fill
                         className="object-cover"
                         priority
@@ -198,31 +198,35 @@ const NeurofeedbackPage = () => {
 
                 {/* Tab 1: 뉴로피드백 (Intro) */}
                 {activeTab === '뉴로피드백' && (
-                    <div className="space-y-16 animate-fadeIn">
-                        <div className="text-center max-w-4xl mx-auto mb-12">
-                            <h2 className="text-3xl font-bold mb-6 text-gray-900">뉴로피드백이란?</h2>
-                            <p className="text-gray-600 leading-relaxed text-lg text-justify md:text-center">
-                                뉴로피드백(Neurofeedback)은 뇌파를 측정하여 자신의 뇌 상태를 실시간으로 모니터링하고,
-                                긍정적인 뇌파 상태를 보상함으로써 뇌 스스로가 최적의 기능을 학습하도록 돕는
-                                <strong> 비약물적 두뇌 훈련 프로그램</strong>입니다.
-                            </p>
+                    <div className="animate-fadeIn max-w-6xl mx-auto">
+                        <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
+                            <div className="lg:w-1/2">
+                                <h2 className="text-3xl font-bold mb-6 text-gray-900 text-left">뉴로피드백이란?</h2>
+                                <p className="text-gray-600 leading-relaxed text-lg text-left mb-6">
+                                    뉴로피드백(Neurofeedback)은 뇌파를 측정하여 자신의 뇌 상태를 실시간으로 모니터링하고,
+                                    긍정적인 뇌파 상태를 보상함으로써 뇌 스스로가 최적의 기능을 학습하도록 돕는
+                                    <strong> 비약물적 두뇌 훈련 프로그램</strong>입니다.
+                                </p>
+                                <p className="text-gray-500 text-sm italic text-left">
+                                    뇌파 측정 → 뇌파 분석 → 실시간 피드백(보상) → 뇌기능 최적화 (자가학습)
+                                </p>
+                            </div>
+
+                            {/* Principle Diagram - Right Side */}
+                            <div className="lg:w-1/2 w-full bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                                <div className="relative h-[300px] md:h-[400px] w-full">
+                                    <Image
+                                        src="/images/humancare/neurofeedback_principle.png"
+                                        alt="뉴로피드백 원리"
+                                        fill
+                                        className="object-contain"
+                                        unoptimized
+                                    />
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Principle Diagram */}
-                        <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 max-w-5xl mx-auto">
-                            <div className="relative h-[300px] md:h-[500px] w-full">
-                                <Image
-                                    src="/images/humancare/neurofeedback_principle.png"
-                                    alt="뉴로피드백 원리"
-                                    fill
-                                    className="object-contain"
-                                    unoptimized
-                                />
-                            </div>
-                            <p className="text-center text-gray-500 mt-4 text-sm">
-                                뇌파 측정 → 분석 → 피드백(보상) → 뇌기능 최적화 (자가학습 원리)
-                            </p>
-                        </div>
+                        {/* Self Check List (Simple Version) */}
 
                         {/* Self Check List (Simple Version) */}
                         <div className="mt-16">
@@ -266,9 +270,9 @@ const NeurofeedbackPage = () => {
                 {/* Tab 2: 뇌파훈련프로그램 (Program) */}
                 {activeTab === '뇌파훈련프로그램' && (
                     <div className="animate-fadeIn">
-                        <div className="text-center mb-16">
-                            <h2 className="text-3xl font-bold mb-4">체계적인 뇌파 훈련 시스템</h2>
-                            <p className="text-gray-600">6단계 두뇌 활성화 프로그램과 개인 맞춤형 프로토콜을 제공합니다.</p>
+                        <div className="mb-16 max-w-4xl mx-auto text-left">
+                            <h2 className="text-3xl font-bold mb-4 text-left">체계적인 뇌파 훈련 시스템</h2>
+                            <p className="text-gray-600 text-left">6단계 두뇌 활성화 프로그램과 개인 맞춤형 프로토콜을 제공합니다.</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -315,9 +319,9 @@ const NeurofeedbackPage = () => {
                 {/* Tab 3: 뇌파훈련 누가할까요 (Target) */}
                 {activeTab === '뇌파훈련 누가할까요' && (
                     <div className="animate-fadeIn space-y-12">
-                        <div className="text-center">
-                            <h2 className="text-3xl font-bold mb-4">대상 및 효과</h2>
-                            <p className="text-gray-600">다양한 증상과 목적에 맞춰 뇌기능을 최적화합니다.</p>
+                        <div className="mb-12 max-w-4xl mx-auto text-left">
+                            <h2 className="text-3xl font-bold mb-4 text-left">대상 및 효과</h2>
+                            <p className="text-gray-600 text-left">다양한 증상과 목적에 맞춰 뇌기능을 최적화합니다.</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -361,9 +365,9 @@ const NeurofeedbackPage = () => {
                 {/* Tab 4: 자가진단 (Self-Check) - INTERACTIVE DETAIL VIEW */}
                 {activeTab === '자가진단(Self-Check)' && (
                     <div className="animate-fadeIn max-w-5xl mx-auto">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold mb-4">자가 진단 체크리스트</h2>
-                            <p className="text-gray-600">
+                        <div className="mb-12 max-w-5xl mx-auto text-left">
+                            <h2 className="text-3xl font-bold mb-4 text-left">자가 진단 체크리스트</h2>
+                            <p className="text-gray-600 text-left">
                                 아래 탭을 선택하여 각 항목별 자가진단을 진행해보세요.<br />
                                 <span className="text-sm text-gray-400">* 본 테스트는 간이 검사이며, 정확한 진단은 센터 방문을 권장합니다.</span>
                             </p>
@@ -420,54 +424,75 @@ const NeurofeedbackPage = () => {
                     </div>
                 )}
 
-                {/* Tab 5: 뇌파훈련사례 (Cases) - Detailed View */}
+                {/* Tab 5: 뇌파훈련사례 (Cases) - Accordion View */}
                 {activeTab === '뇌파훈련사례' && (
                     <div className="animate-fadeIn max-w-4xl mx-auto">
-                        <h2 className="text-3xl font-bold mb-8 text-center">성공적인 변화 사례</h2>
-                        <div className="grid gap-8">
+                        <h2 className="text-3xl font-bold mb-8 text-left text-gray-900">성공적인 변화 사례</h2>
+                        <div className="grid gap-6">
                             {cases.map((story, idx) => (
-                                <article key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                                    <header className="mb-6 border-b border-gray-100 pb-4">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <span className="bg-[#EF9300] text-white text-xs px-2 py-1 rounded font-bold">CASE STUDY</span>
-                                            <span className="text-sm text-gray-400">{story.date}</span>
+                                <details key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 group open:ring-1 open:ring-blue-100 transition-all duration-300">
+                                    <summary className="cursor-pointer p-6 flex justify-between items-center select-none list-none outline-none">
+                                        <div className="flex flex-col gap-2 text-left">
+                                            <div className="flex items-center gap-3">
+                                                <span className="bg-[#EF9300] text-white text-[10px] px-2 py-0.5 rounded font-bold">CASE STUDY</span>
+                                                <span className="text-sm text-gray-400">{story.date}</span>
+                                            </div>
+                                            <h3 className="text-xl font-bold text-[#00305B] group-hover:text-blue-600 transition-colors">
+                                                {story.title}
+                                            </h3>
                                         </div>
-                                        <h3 className="text-2xl font-bold text-[#00305B]">{story.title}</h3>
-                                    </header>
-                                    <div className="prose prose-blue max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap">
-                                        {story.content}
+                                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-open:rotate-180 transition-transform duration-300">
+                                            ▼
+                                        </div>
+                                    </summary>
+                                    <div className="px-6 pb-8 pt-2">
+                                        <div className="h-px w-full bg-gray-100 mb-6" />
+                                        <div className="prose prose-blue max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap text-left">
+                                            {story.content}
+                                        </div>
                                     </div>
-                                </article>
+                                </details>
                             ))}
                         </div>
                     </div>
                 )}
 
-                {/* Tab 6: 뇌에서 답을 찾자 (Knowledge) - Detailed View */}
+                {/* Tab 6: 뇌에서 답을 찾자 (Knowledge) - Accordion View */}
                 {activeTab === '뇌에서 답을 찾자' && (
                     <div className="animate-fadeIn max-w-4xl mx-auto">
-                        <div className="text-center mb-12">
+                        <div className="text-left mb-12">
                             <h2 className="text-3xl font-bold mb-4">뇌에서 답을 찾자</h2>
-                            <p className="text-center text-gray-600">뇌과학 전문가가 전하는 깊이 있는 칼럼</p>
+                            <p className="text-left text-gray-600">뇌과학 전문가가 전하는 깊이 있는 칼럼</p>
                         </div>
 
-                        <div className="grid gap-8">
+                        <div className="grid gap-6">
                             {knowledges.map((post, idx) => (
-                                <article key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-6 hover:shadow-md transition-shadow">
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-3">
-                                            <span className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold">COLUMN</span>
-                                            <span className="text-sm text-gray-400">{post.date}</span>
+                                <details key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 group open:ring-1 open:ring-blue-100 transition-all duration-300">
+                                    <summary className="cursor-pointer p-6 flex justify-between items-center select-none list-none outline-none">
+                                        <div className="flex flex-col gap-2 text-left">
+                                            <div className="flex items-center gap-3">
+                                                <span className="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded font-bold">COLUMN</span>
+                                                <span className="text-sm text-gray-400">{post.date}</span>
+                                            </div>
+                                            <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                                {post.title}
+                                            </h3>
                                         </div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-4">{post.title}</h3>
-                                        <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">{post.content}</p>
+                                        <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-open:rotate-180 transition-transform duration-300">
+                                            ▼
+                                        </div>
+                                    </summary>
+                                    <div className="px-6 pb-8 pt-2">
+                                        <div className="h-px w-full bg-gray-100 mb-6" />
+                                        <div className="prose prose-blue max-w-none text-gray-600 leading-relaxed whitespace-pre-wrap text-left">
+                                            {post.content}
+                                        </div>
                                     </div>
-                                </article>
+                                </details>
                             ))}
                         </div>
                     </div>
                 )}
-
             </main>
         </div>
     );

@@ -1,4 +1,4 @@
-// File: C:\Users\lsw01\Desktop\panaxtos\panaxtos\front\app\page.tsx
+// File: C:\Users\lsw01\Desktop\dev\panaxtos\front\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

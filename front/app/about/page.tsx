@@ -9,11 +9,20 @@ export default function AboutPage() {
     return (
         <main className="min-h-screen bg-white">
             {/* Page Header */}
-            <section className="relative bg-[#00305B] py-24 text-center text-white overflow-hidden">
-                <div className="absolute inset-0 opacity-10 bg-[url('/images/center/aisle.png')] bg-cover bg-center"></div>
+            <section className="relative py-24 text-center text-white overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/images/center/aisle.png"
+                        alt="센터 전경"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-[#00305B]/40"></div>
+                </div>
                 <div className="relative z-10">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">센터 소개</h1>
-                    <p className="text-blue-100 text-lg">탁월한 전문성과 따뜻한 공간이 만나는 곳</p>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">센터 소개</h1>
+                    <p className="text-blue-50 text-lg font-medium drop-shadow">탁월한 전문성과 따뜻한 공간이 만나는 곳</p>
                 </div>
             </section>
 

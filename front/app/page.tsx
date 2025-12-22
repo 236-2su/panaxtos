@@ -35,17 +35,12 @@ export default function Home() {
         </div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center text-white px-4">
-          <div className="inline-block px-4 py-1 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm mb-6 animate-fade-in-up">
-            <span className="text-sm md:text-base font-medium">뇌·정서·행동 통합 케어 솔루션</span>
-          </div>
+
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-100 shadow-text">
             다온통합뇌심리센터
-            <span className="block text-2xl md:text-3xl mt-4 font-normal opacity-90">(파낙토스 통합뇌센터 진주센터)</span>
+            <span className="block text-2xl md:text-3xl mt-4 font-normal opacity-90">파낙토스 통합뇌센터 진주센터</span>
           </h1>
-          <p className="text-lg md:text-2xl mb-12 text-gray-100 animate-fade-in-up delay-200 max-w-2xl mx-auto leading-relaxed font-light">
-            뇌·정서·행동을 함께 돌보는 다온통합뇌심리센터가<br className="hidden md:block" />
-            당신의 건강한 성장에 함께합니다.
-          </p>
+
 
           <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up delay-300">
             <Link

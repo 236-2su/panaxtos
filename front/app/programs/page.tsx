@@ -40,6 +40,18 @@ export default function ProgramsPage() {
                 '치매 예방 및 노인 인지 기능 강화 훈련'
             ],
             img: '/img/program_analysis.png'
+        },
+        {
+            id: 'company',
+            title: '기업 EAP 및 직무 스트레스 관리',
+            desc: '건강한 조직 문화를 위한 임직원 멘탈케어 솔루션입니다.',
+            details: [
+                '직무 스트레스 평가 및 전문가 심층 상담',
+                '조직 문화 개선 컨설팅 및 소통 프로그램',
+                '임직원 힐링 워크숍 및 뇌파 명상 교육',
+                '번아웃 예방 및 정신 건강 정기 검진'
+            ],
+            img: '/images/humancare/program_company.png'
         }
     ];
 

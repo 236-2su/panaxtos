@@ -1,4 +1,4 @@
-// File: C:\Users\lsw01\Desktop\panaxtos\panaxtos\front\app\assessment\page.tsx
+// File: C:\Users\lsw01\Desktop\dev\panaxtos\front\app\assessment\page.tsx
 import * as entry from '../../../../app/assessment/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

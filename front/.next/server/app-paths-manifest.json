@@ -1,7 +1,8 @@
 {
-  "/neurofeedback/page": "app/neurofeedback/page.js",
   "/assessment/page": "app/assessment/page.js",
   "/page": "app/page.js",
   "/about/page": "app/about/page.js",
-  "/location/page": "app/location/page.js"
+  "/location/page": "app/location/page.js",
+  "/neurofeedback/page": "app/neurofeedback/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

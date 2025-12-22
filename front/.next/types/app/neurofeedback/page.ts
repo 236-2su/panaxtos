@@ -1,4 +1,4 @@
-// File: C:\Users\lsw01\Desktop\panaxtos\panaxtos\front\app\neurofeedback\page.tsx
+// File: C:\Users\lsw01\Desktop\dev\panaxtos\front\app\neurofeedback\page.tsx
 import * as entry from '../../../../app/neurofeedback/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
