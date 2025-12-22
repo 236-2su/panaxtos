@@ -53,7 +53,7 @@ export default function Home() {
               href="/reservation"
               className="px-8 py-4 bg-[#EF9300] text-white rounded-full font-semibold hover:bg-[#d88400] transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-[#EF9300]/50 hover:-translate-y-1 w-full md:w-auto"
             >
-              상담 예약하기 →
+              상담 예약하기
             </Link>
           </div>
         </div>
