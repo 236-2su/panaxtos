@@ -19,7 +19,8 @@ export default function Header() {
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-8">
                     <Link href="/about" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">센터 소개</Link>
-                    <Link href="/programs" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">프로그램</Link>
+                    <Link href="/neurofeedback" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">뉴로피드백</Link>
+                    <Link href="/assessment" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">검사·기업 프로그램</Link>
                     <Link href="/reviews" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">훈련 후기</Link>
                     <Link href="/location" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">오시는 길</Link>
                     <Link
@@ -48,7 +49,8 @@ export default function Header() {
             {isMenuOpen && (
                 <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-xl py-4 flex flex-col items-center gap-6 animate-fade-in-down z-40">
                     <Link href="/about" className="text-lg font-medium w-full text-center py-2 hover:bg-gray-50 text-[#333]" onClick={() => setIsMenuOpen(false)}>센터 소개</Link>
-                    <Link href="/programs" className="text-lg font-medium w-full text-center py-2 hover:bg-gray-50 text-[#333]" onClick={() => setIsMenuOpen(false)}>프로그램</Link>
+                    <Link href="/neurofeedback" className="text-lg font-medium w-full text-center py-2 hover:bg-gray-50 text-[#333]" onClick={() => setIsMenuOpen(false)}>뉴로피드백</Link>
+                    <Link href="/assessment" className="text-lg font-medium w-full text-center py-2 hover:bg-gray-50 text-[#333]" onClick={() => setIsMenuOpen(false)}>검사·기업 프로그램</Link>
                     <Link href="/reviews" className="text-lg font-medium w-full text-center py-2 hover:bg-gray-50 text-[#333]" onClick={() => setIsMenuOpen(false)}>훈련 후기</Link>
                     <Link href="/location" className="text-lg font-medium w-full text-center py-2 hover:bg-gray-50 text-[#333]" onClick={() => setIsMenuOpen(false)}>오시는 길</Link>
                     <Link

@@ -24,8 +24,8 @@ export default function Footer() {
                             <div>
                                 <span className="opacity-50 inline-block w-16">센터명</span>
                                 <div>
-                                    <span>파낙토스 통합뇌센터 진주점</span><br />
-                                    <span className="text-xs opacity-70">(다온통합뇌심리센터)</span>
+                                    <span>다온통합뇌심리센터</span><br />
+                                    <span className="text-xs opacity-70">(파낙토스 통합뇌센터 진주점)</span>
                                 </div>
                             </div>
                             <div>
@@ -62,7 +62,8 @@ export default function Footer() {
                         <h4 className="font-bold text-lg mb-4 text-[#EF9300]">LINKS</h4>
                         <ul className="space-y-2 text-sm text-white/70">
                             <li><Link href="/about" className="hover:text-white transition-colors">센터 소개</Link></li>
-                            <li><Link href="/programs" className="hover:text-white transition-colors">프로그램 안내</Link></li>
+                            <li><Link href="/neurofeedback" className="hover:text-white transition-colors">뉴로피드백</Link></li>
+                            <li><Link href="/assessment" className="hover:text-white transition-colors">검사·기업 프로그램</Link></li>
                             <li><Link href="/reviews" className="hover:text-white transition-colors">훈련 후기</Link></li>
                             <li><Link href="/location" className="hover:text-white transition-colors">오시는 길</Link></li>
                             <li><Link href="/reservation" className="hover:text-white transition-colors">상담 예약</Link></li>

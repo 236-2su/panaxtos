@@ -25,25 +25,26 @@ export default function Home() {
       <section className="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
-            src="/images/center/living_room.png"
-            alt="센터 메인 전경"
+            src="/images/renewal/hero.png"
+            alt="다온통합뇌심리센터 메인 전경"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center text-white px-4">
           <div className="inline-block px-4 py-1 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm mb-6 animate-fade-in-up">
-            <span className="text-sm md:text-base font-medium">뇌과학이 여는 새로운 변화</span>
+            <span className="text-sm md:text-base font-medium">뇌·정서·행동 통합 케어 솔루션</span>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-100 shadow-text">
-            파낙토스 <span className="text-[#EF9300]">진주센터</span>
+            다온통합뇌심리센터
+            <span className="block text-2xl md:text-3xl mt-4 font-normal opacity-90">(파낙토스 통합뇌센터 진주센터)</span>
           </h1>
           <p className="text-lg md:text-2xl mb-12 text-gray-100 animate-fade-in-up delay-200 max-w-2xl mx-auto leading-relaxed font-light">
-            당신의 뇌가 가진 무한한 잠재력,<br className="hidden md:block" />
-            체계적인 <strong>뉴로피드백 훈련</strong>으로 깨워드립니다.
+            뇌·정서·행동을 함께 돌보는 다온통합뇌심리센터가<br className="hidden md:block" />
+            당신의 건강한 성장에 함께합니다.
           </p>
 
           <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up delay-300">
@@ -155,7 +156,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3">ADHD / 집중력</h3>
+                  <h3 className="text-2xl font-bold mb-3">주의력 · 자기조절</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     산만함을 줄이고 자기조절능력을 키워 학습 효율을 높입니다.
                   </p>
@@ -174,7 +175,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3">불면 / 우울 / 불안</h3>
+                  <h3 className="text-2xl font-bold mb-3">불안 · 수면 · 정서 안정</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     뇌파 안정을 통해 정서적 편안함과 깊은 수면을 되찾습니다.
                   </p>
@@ -193,7 +194,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3">뇌기능 발달</h3>
+                  <h3 className="text-2xl font-bold mb-3">학습 · 인지 발달</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     두뇌의 정보처리 속도와 기억력을 향상시켜 학습 능력을 극대화합니다.
                   </p>
@@ -212,7 +213,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-3">치매 예방</h3>
+                  <h3 className="text-2xl font-bold mb-3">중장년 · 노년 뇌 건강</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     전두엽 기능을 활성화하여 인지 기능 저하를 막고 뇌 건강을 지킵니다.
                   </p>

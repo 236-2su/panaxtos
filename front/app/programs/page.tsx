@@ -62,10 +62,10 @@ export default function ProgramsPage() {
     ];
 
     const programTypes = [
-        { icon: "🧠", title: "스마트 브레인", desc: "뇌 신경망 발달 훈련" },
-        { icon: "📚", title: "학습 능력", desc: "집중력·기억력 향상" },
-        { icon: "💚", title: "두뇌 건강", desc: "스트레스 해소·치매 예방" },
-        { icon: "🌿", title: "두뇌 힐링", desc: "정서 안정·휴식" }
+        { icon: "", title: "스마트 브레인", desc: "뇌 신경망 발달 훈련" },
+        { icon: "", title: "학습 능력", desc: "집중력·기억력 향상" },
+        { icon: "", title: "두뇌 건강", desc: "스트레스 해소·치매 예방" },
+        { icon: "", title: "두뇌 힐링", desc: "정서 안정·휴식" }
     ];
 
     return (
