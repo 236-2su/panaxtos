@@ -38,7 +38,7 @@ export default function Home() {
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-100 shadow-text">
             다온통합뇌심리센터
-            <span className="block text-2xl md:text-3xl mt-4 font-normal opacity-90">뇌•심리 상담센터</span>
+
           </h1>
 
 
