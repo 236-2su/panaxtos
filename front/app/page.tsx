@@ -51,7 +51,7 @@ export default function Home() {
             </Link>
             <Link
               href="/reservation"
-              className="px-8 py-4 bg-[#EF9300] text-white rounded-full font-semibold hover:bg-[#d88400] transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-[#EF9300]/50 hover:-translate-y-1 w-full md:w-auto"
+              className="px-8 py-4 bg-[#1E7BC8] text-white rounded-full font-semibold hover:bg-[#1666A6] transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-[#1E7BC8]/50 hover:-translate-y-1 w-full md:w-auto"
             >
               상담 예약하기
             </Link>
@@ -67,7 +67,7 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="text-[#EF9300] font-bold tracking-widest text-xs uppercase mb-3 block">Why Panaxtos</span>
+            <span className="text-[#1E7BC8] font-bold tracking-widest text-xs uppercase mb-3 block">Why Panaxtos</span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#00305B]">
               왜 파낙토스일까요?
             </h2>
@@ -89,7 +89,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#00305B]/90 via-[#00305B]/40 to-transparent opacity-90"></div>
                   <div className="absolute bottom-0 left-0 p-8 text-white">
-                    <div className="w-12 h-1 bg-[#EF9300] mb-4"></div>
+                    <div className="w-12 h-1 bg-[#1E7BC8] mb-4"></div>
                     <h3 className="text-2xl font-bold mb-2">
                       {item.title}
                     </h3>
@@ -109,7 +109,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
-              <span className="text-[#EF9300] font-bold tracking-widest text-xs uppercase mb-3 block">Our Programs</span>
+              <span className="text-[#1E7BC8] font-bold tracking-widest text-xs uppercase mb-3 block">Our Programs</span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#00305B]">
                 맞춤형 뇌 훈련 프로그램
               </h2>
@@ -266,7 +266,7 @@ export default function Home() {
 
           <div className="flex flex-col md:flex-row items-center gap-6 w-full lg:w-auto">
             <div className="text-center md:text-right">
-              <p className="text-[#EF9300] text-xs mb-1 uppercase font-bold tracking-wider">Contact Us</p>
+              <p className="text-[#1E7BC8] text-xs mb-1 uppercase font-bold tracking-wider">Contact Us</p>
               <p className="text-3xl font-bold text-[#00305B] leading-none mb-1">055-920-2937</p>
               <p className="text-xs text-gray-400">평일 10:00 - 19:00 (공휴일 휴무)</p>
             </div>
@@ -281,7 +281,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold mb-8">변화는 뇌에서 시작됩니다</h2>
           <Link
             href="/reservation"
-            className="inline-block px-12 py-5 bg-[#EF9300] text-white rounded-full font-bold text-xl hover:bg-[#d88400] transition-all shadow-xl hover:-translate-y-1"
+            className="inline-block px-12 py-5 bg-[#1E7BC8] text-white rounded-full font-bold text-xl hover:bg-[#1666A6] transition-all shadow-xl hover:-translate-y-1"
           >
             상담 예약하기
           </Link>

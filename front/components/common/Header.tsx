@@ -18,18 +18,18 @@ export default function Header() {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-8">
-                    <Link href="/about" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">센터 소개</Link>
-                    <Link href="/neurofeedback" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">뉴로피드백</Link>
-                    <Link href="/assessment" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">검사·기업 프로그램</Link>
-                    <Link href="/reviews" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">훈련 후기</Link>
-                    <Link href="/location" className="text-[16px] font-medium transition-colors hover:text-[#EF9300] text-[#555]">오시는 길</Link>
+                    <Link href="/about" className="text-[16px] font-medium transition-colors hover:text-[#1E7BC8] text-[#555]">센터 소개</Link>
+                    <Link href="/neurofeedback" className="text-[16px] font-medium transition-colors hover:text-[#1E7BC8] text-[#555]">뉴로피드백</Link>
+                    <Link href="/assessment" className="text-[16px] font-medium transition-colors hover:text-[#1E7BC8] text-[#555]">검사·기업 프로그램</Link>
+                    <Link href="/reviews" className="text-[16px] font-medium transition-colors hover:text-[#1E7BC8] text-[#555]">훈련 후기</Link>
+                    <Link href="/location" className="text-[16px] font-medium transition-colors hover:text-[#1E7BC8] text-[#555]">오시는 길</Link>
                     <Link
                         href="/reservation"
                         className="px-6 py-2.5 rounded-full text-[15px] font-bold transition-all hover:opacity-90 hover:scale-105"
                         style={{
-                            background: '#EF9300',
+                            background: '#1E7BC8',
                             color: '#fff',
-                            boxShadow: '0 4px 12px rgba(239, 147, 0, 0.3)'
+                            boxShadow: '0 4px 12px rgba(30, 123, 200, 0.3)'
                         }}
                     >
                         상담 예약
@@ -55,7 +55,8 @@ export default function Header() {
                     <Link href="/location" className="text-lg font-medium w-full text-center py-2 hover:bg-gray-50 text-[#333]" onClick={() => setIsMenuOpen(false)}>오시는 길</Link>
                     <Link
                         href="/reservation"
-                        className="px-8 py-3 rounded-full text-lg font-bold bg-[#EF9300] text-white shadow-md my-2"
+                        className="px-8 py-3 rounded-full text-lg font-bold text-white shadow-md my-2"
+                        style={{ backgroundColor: '#1E7BC8' }}
                         onClick={() => setIsMenuOpen(false)}
                     >
                         상담 예약

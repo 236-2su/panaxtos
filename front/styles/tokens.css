@@ -3,9 +3,9 @@
   --color-primary: #00305B;
   /* Panaxtos Deep Blue */
   --color-primary-light: #004C8C;
-  --color-accent: #EF9300;
-  /* Panaxtos Orange */
-  --color-accent-glow: rgba(239, 147, 0, 0.4);
+  --color-accent: #1E7BC8;
+  /* Panaxtos Bright Blue */
+  --color-accent-glow: rgba(30, 123, 200, 0.4);
 
   /* Backgrounds */
   --bg-main: #ffffff;

@@ -131,9 +131,7 @@ export default function WriteReviewPage() {
                             </button>
                             <button
                                 type="submit"
-                                disabled={isSubmitting}
-                                className="w-2/3 py-4 rounded-lg font-bold text-white transition-all hover:opacity-90 disabled:opacity-50"
-                                className="w-2/3 py-4 rounded-lg font-bold text-white bg-[#EF9300] transition-all hover:opacity-90 disabled:opacity-50"
+                                className="w-2/3 py-4 rounded-lg font-bold text-white bg-[#1E7BC8] transition-all hover:opacity-90 disabled:opacity-50"
                             >
                                 {isSubmitting ? '등록 중...' : '후기 등록하기'}
                             </button>

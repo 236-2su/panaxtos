@@ -33,7 +33,7 @@ export default function BrandLogo({ variant = 'light' }: BrandLogoProps) {
 
             {/* Text Content */}
             <div className="flex flex-col justify-center">
-                <span className={`text-[19px] font-bold tracking-tight leading-tight transition-colors group-hover:text-[#EF9300] ${mainTextColor}`}>
+                <span className={`text-[19px] font-bold tracking-tight leading-tight transition-colors group-hover:text-[#1E7BC8] ${mainTextColor}`}>
                     다온통합 뇌심리센터
                 </span>
                 <span className={`text-[13px] font-medium tracking-wide ${subTextColor} ${subTextOpacity}`}>

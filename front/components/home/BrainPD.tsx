@@ -35,59 +35,56 @@ export default function BrainPD() {
 
   return (
     <section className="">
-        <h1>파낙토스 브레인 PD</h1>
-        <div className="grid grid-cols-2 gap-16 mt-10">
-            {/* 리스트 */}
-            <div className="space-y-10 pr-10 pt-6">
-            {brainDescriptions.map((item, i) => (
-                <div
-                    key={item.title}
-                    className="group cursor-pointer"
-                    onMouseEnter={() => setActive(i)}
-                    onFocus={() => setActive(i)}
-                    tabIndex={0}
+      <h1>파낙토스 브레인 PD</h1>
+      <div className="grid grid-cols-2 gap-16 mt-10">
+        {/* 리스트 */}
+        <div className="space-y-10 pr-10 pt-6">
+          {brainDescriptions.map((item, i) => (
+            <div
+              key={item.title}
+              className="group cursor-pointer"
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              tabIndex={0}
+            >
+              <div className="relative pb-2 w-full">
+                <h2 className={`font-extrabold tracking-tight transition-colors ${active === i ? "text-[#1E7BC8]" : "hover:text-[#1E7BC8]"
+                  }`}
                 >
-                    <div className="relative pb-2 w-full">
-                        <h2 className={`font-extrabold tracking-tight transition-colors ${
-                            active === i ? "text-[#EF9300]" : "hover:text-[#EF9300]"
-                        }`}
-                        >
-                        {item.title}
-                        </h2>
-                        <span className={`absolute left-0 -bottom-1.5 h-[1px] bg-[#FEBE10] transition-all duration-500 ease-out ${
-                            active === i ? "w-full" : "w-0 group-hover:w-full"
-                        }`}
-                        />
-                    </div>
+                  {item.title}
+                </h2>
+                <span className={`absolute left-0 -bottom-1.5 h-[1px] bg-[#1E7BC8] transition-all duration-500 ease-out ${active === i ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </div>
 
-                    <div className={`overflow-hidden transition-[padding] duration-400 ease-out ${
-                        active === i ? "px-4 py-5" : "p-0"
-                        }`}
-                    >
-                        {active === i && (
-                        <p className=""
-                            dangerouslySetInnerHTML={{ __html: item.description }}
-                        />
-                        )}
-                    </div>
-                </div>
-            ))}
+              <div className={`overflow-hidden transition-[padding] duration-400 ease-out ${active === i ? "px-4 py-5" : "p-0"
+                }`}
+              >
+                {active === i && (
+                  <p className=""
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
+                )}
+              </div>
             </div>
-
-            {/* 이미지 */}
-            <div className="flex items-start justify-center">
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-md shadow-lg">
-                    <Image
-                        key={current.imageUrl}
-                        src={current.imageUrl}
-                        alt={`${current.title} 이미지`}
-                        fill
-                        className="object-cover transition-all duration-700 ease-in-out"
-                        priority
-                    />
-                </div>
-            </div>
+          ))}
         </div>
+
+        {/* 이미지 */}
+        <div className="flex items-start justify-center">
+          <div className="relative w-full aspect-[4/3] overflow-hidden rounded-md shadow-lg">
+            <Image
+              key={current.imageUrl}
+              src={current.imageUrl}
+              alt={`${current.title} 이미지`}
+              fill
+              className="object-cover transition-all duration-700 ease-in-out"
+              priority
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

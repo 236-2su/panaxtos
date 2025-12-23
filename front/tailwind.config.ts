@@ -11,7 +11,7 @@ const config: Config = {
         extend: {
             colors: {
                 primary: "#00305B",
-                secondary: "#EF9300",
+                secondary: "#1E7BC8",
             },
             animation: {
                 "fade-in-up": "fadeInUp 0.8s ease-out forwards",

@@ -1,3 +1,9 @@
 {
+  "/reviews/page": "app/reviews/page.js",
+  "/neurofeedback/page": "app/neurofeedback/page.js",
+  "/location/page": "app/location/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/login/page": "app/login/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js"
 }

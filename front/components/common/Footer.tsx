@@ -20,7 +20,7 @@ export default function Footer() {
 
                     {/* Contact Info */}
                     <div className="md:col-span-2">
-                        <h4 className="font-bold text-lg mb-4 text-[#EF9300]">CONTACT</h4>
+                        <h4 className="font-bold text-lg mb-4 text-[#1E7BC8]">CONTACT</h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-sm text-white/80">
                             <div>
                                 <span className="opacity-50 inline-block w-16">센터명</span>
@@ -49,7 +49,7 @@ export default function Footer() {
                                 <span className="opacity-50 inline-block w-16">운영시간</span>
                                 <span>평일 10:00~19:00 (점심 12:00~13:30)</span><br />
                                 <span className="opacity-50 inline-block w-16"></span>
-                                <span className="text-[#EF9300]">※ 일요일, 월요일, 공휴일 휴무</span>
+                                <span className="text-[#1E7BC8]">※ 일요일, 월요일, 공휴일 휴무</span>
                             </div>
                             <div className="col-span-2">
                                 <span className="opacity-50 inline-block w-16">주소</span>
@@ -60,7 +60,7 @@ export default function Footer() {
 
                     {/* Links */}
                     <div>
-                        <h4 className="font-bold text-lg mb-4 text-[#EF9300]">LINKS</h4>
+                        <h4 className="font-bold text-lg mb-4 text-[#1E7BC8]">LINKS</h4>
                         <ul className="space-y-2 text-sm text-white/70">
                             <li><Link href="/about" className="hover:text-white transition-colors">센터 소개</Link></li>
                             <li><Link href="/neurofeedback" className="hover:text-white transition-colors">뉴로피드백</Link></li>

@@ -71,7 +71,7 @@ function ReviewDetailContent() {
             <div className="min-h-screen py-16 px-4 flex items-center justify-center" style={{ background: 'var(--bg-main)' }}>
                 <div className="text-center">
                     <p className="text-xl mb-4" style={{ color: 'var(--text-main)' }}>후기를 찾을 수 없습니다.</p>
-                    <Link href="/reviews" className="text-[#EF9300] hover:underline">
+                    <Link href="/reviews" className="text-[#1E7BC8] hover:underline">
                         목록으로 돌아가기
                     </Link>
                 </div>
@@ -187,17 +187,16 @@ function ReviewDetailContent() {
                     </div>
                 )}
 
-                <div className="mt-12 text-center p-8 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl">
+                <div className="mt-12 text-center p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl">
                     <h3 className="text-2xl font-bold mb-4">무료 상담을 받아보세요</h3>
                     <p className="text-gray-600 mb-6">
                         전문가와의 1:1 상담으로 여러분에게 맞는 최적의 훈련 프로그램을 찾아드립니다.
                     </p>
                     <Link
                         href="/reservation"
-                        className="inline-block px-8 py-4 rounded-lg font-bold text-white transition-all hover:scale-105 shadow-lg"
-                        style={{ background: 'var(--color-accent)' }}
+                        className="inline-block px-8 py-4 rounded-lg font-bold text-white transition-all hover:scale-105 shadow-lg bg-[#1E7BC8]"
                     >
-                        상담 예약하기 →
+                        상담 예약하기
                     </Link>
                 </div>
             </div>

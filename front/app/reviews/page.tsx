@@ -16,11 +16,11 @@ export default function ReviewsPage() {
                         훈련 후기
                     </h1>
                     <p className="text-xl mb-8" style={{ color: 'var(--text-secondary)' }}>
-                        파낙토스 진주센터에서 훈련받으신 회원분들의 생생한 후기입니다.
+                        다온심리상담센터에서 훈련받으신 회원분들의 생생한 후기입니다.
                     </p>
                     <Link
                         href="/reviews/write"
-                        className="inline-block px-6 py-3 rounded-lg font-bold text-white bg-[#EF9300] transition-all hover:opacity-90 shadow-md"
+                        className="inline-block px-6 py-3 rounded-lg font-bold text-white bg-[#1E7BC8] transition-all hover:opacity-90 shadow-md"
                     >
                         📝 후기 작성하기
                     </Link>
@@ -80,7 +80,7 @@ export default function ReviewsPage() {
                                 </div>
 
                                 {/* 더보기 힌트 */}
-                                <div className="mt-3 text-sm text-[#EF9300] font-medium flex items-center gap-1">
+                                <div className="mt-3 text-sm text-[#1E7BC8] font-medium flex items-center gap-1">
                                     자세히 보기 <span>→</span>
                                 </div>
                             </Link>
@@ -89,16 +89,16 @@ export default function ReviewsPage() {
                 )}
 
                 {/* CTA */}
-                <div className="mt-16 text-center p-8 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl">
+                <div className="mt-16 text-center p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl">
                     <h3 className="text-2xl font-bold mb-4">무료 상담을 받아보세요</h3>
                     <p className="text-gray-600 mb-6">
                         전문가와의 1:1 상담으로 여러분에게 맞는 최적의 훈련 프로그램을 찾아드립니다.
                     </p>
                     <Link
                         href="/reservation"
-                        className="inline-block px-8 py-4 rounded-lg font-bold text-white bg-[#EF9300] transition-all hover:scale-105 shadow-lg"
+                        className="inline-block px-8 py-4 rounded-lg font-bold text-white bg-[#1E7BC8] transition-all hover:scale-105 shadow-lg"
                     >
-                        상담 예약하기 →
+                        상담 예약하기
                     </Link>
                 </div>
             </div>
