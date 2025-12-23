@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import BrandLogo from "./BrandLogo"
 
 export default function Footer() {
     return (
@@ -8,9 +9,9 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                     {/* Brand Section */}
                     <div className="md:col-span-1">
-                        <Link href="/" className="inline-block mb-6">
-                            <Image src="/logo.png" alt="파낙토스" width={180} height={40} className="brightness-0 invert" style={{ opacity: 0.9 }} />
-                        </Link>
+                        <div className="mb-6">
+                            <BrandLogo variant="dark" />
+                        </div>
                         <p className="text-white/60 text-sm leading-relaxed">
                             뇌과학 기반의 전문적인 두뇌 훈련으로<br />
                             여러분의 건강과 행복을 지켜드립니다.

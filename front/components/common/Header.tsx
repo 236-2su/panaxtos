@@ -4,6 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 
+import BrandLogo from '@/components/common/BrandLogo'
+
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -11,9 +13,7 @@ export default function Header() {
         <header className="border-b border-[#eee] bg-white sticky top-0 z-50">
             <div className="default-container h-20 flex justify-between items-center relative">
                 <div className="">
-                    <Link href="/">
-                        <Image src="/logo-black.png" alt="logo" width={154} height={34} priority />
-                    </Link>
+                    <BrandLogo variant="light" />
                 </div>
 
                 {/* Desktop Navigation */}
