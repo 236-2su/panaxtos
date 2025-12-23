@@ -10,7 +10,7 @@ export default function ReservationList() {
     const searchParams = useSearchParams();
     const branchId = searchParams.get('branch') || 'jinju';
 
-    const { data: reservations = [], error } = useSWR<any[]>(`/api/reservations?branchId=${branchId}`, fetcher);
+    const { data: reservations = [] } = useSWR<any[]>(`/api/reservations?branchId=${branchId}`, fetcher);
 
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [password, setPassword] = useState('');
