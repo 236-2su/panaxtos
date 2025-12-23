@@ -5,6 +5,14 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-end-rgb: 255, 255, 255;
+
+  /* Panaxtos Design Tokens */
+  --color-accent: #1E7BC8;
+  --bg-main: #f9fafb;
+  --bg-card: #ffffff;
+  --text-main: #111827;
+  --text-secondary: #4b5563;
+  --border-color: #e5e7eb;
 }
 
 body {
