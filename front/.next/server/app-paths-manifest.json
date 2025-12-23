@@ -1,7 +1,6 @@
 {
-  "/api/reservations/route": "app/api/reservations/route.js",
-  "/reservation/page": "app/reservation/page.js",
   "/page": "app/page.js",
-  "/reservation/create/page": "app/reservation/create/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/icon.jpg/route": "app/icon.jpg/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js"
 }

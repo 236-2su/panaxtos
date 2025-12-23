@@ -21,7 +21,7 @@ export default function Footer() {
                     {/* Contact Info */}
                     <div className="md:col-span-2">
                         <h4 className="font-bold text-lg mb-4 text-[#1E7BC8]">CONTACT</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-sm text-white/80">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm text-white/80">
                             <div>
                                 <span className="opacity-50 inline-block w-16">센터명</span>
                                 <div>

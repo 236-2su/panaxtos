@@ -25,7 +25,7 @@ export default function Home() {
       <section className="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
-            src="/images/renewal/hero.png"
+            src="/images/renewal/hero.webp"
             alt="다온통합뇌심리센터 메인 전경"
             fill
             className="object-cover"
@@ -75,9 +75,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: '과학적인 뇌파 검사', desc: '최신 측정 장비를 통해 두뇌 상태를 정밀 분석합니다.', img: '/images/center/analyze_room.png' },
-              { title: '맞춤형 훈련 프로그램', desc: '개인별 뇌 특성에 맞는 최적의 솔루션을 설계합니다.', img: '/images/center/play_room.png' },
-              { title: '전문적인 심리 상담', desc: '풍부한 임상 경험의 센터장이 직접 케어합니다.', img: '/images/center/counsel_room.png' }
+              { title: '과학적인 뇌파 검사', desc: '최신 측정 장비를 통해 두뇌 상태를 정밀 분석합니다.', img: '/images/center/analyze_room.webp' },
+              { title: '맞춤형 훈련 프로그램', desc: '개인별 뇌 특성에 맞는 최적의 솔루션을 설계합니다.', img: '/images/center/play_room.webp' },
+              { title: '전문적인 심리 상담', desc: '풍부한 임상 경험의 센터장이 직접 케어합니다.', img: '/images/center/counsel_room.webp' }
             ].map((item, idx) => (
               <div key={idx} className="block">
                 <div className="relative w-full h-80 rounded-2xl overflow-hidden shadow-lg transition-all">
@@ -144,7 +144,7 @@ export default function Home() {
             <div className="flex-none w-[85vw] md:w-[350px] snap-center">
               <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
-                  src="/images/programs/adhd_focus_child.png"
+                  src="/images/programs/adhd_focus_child.webp"
                   alt="ADHD 집중력 훈련"
                   fill
                   className="object-cover transition-transform duration-700"
@@ -163,7 +163,7 @@ export default function Home() {
             <div className="flex-none w-[85vw] md:w-[350px] snap-center">
               <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
-                  src="/images/programs/sleep_calm_woman.png"
+                  src="/images/programs/sleep_calm_woman.webp"
                   alt="불면증 및 정서조절"
                   fill
                   className="object-cover transition-transform duration-700"
@@ -182,7 +182,7 @@ export default function Home() {
             <div className="flex-none w-[85vw] md:w-[350px] snap-center">
               <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
-                  src="/images/programs/brain_development_student.png"
+                  src="/images/programs/brain_development_student.webp"
                   alt="뇌기능 발달"
                   fill
                   className="object-cover transition-transform duration-700"
@@ -201,7 +201,7 @@ export default function Home() {
             <div className="flex-none w-[85vw] md:w-[350px] snap-center">
               <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
-                  src="/images/programs/dementia_prevention_senior.png"
+                  src="/images/programs/dementia_prevention_senior.webp"
                   alt="치매 예방"
                   fill
                   className="object-cover transition-transform duration-700"
@@ -220,7 +220,7 @@ export default function Home() {
             <div className="flex-none w-[85vw] md:w-[350px] snap-center">
               <div className="relative w-full h-[450px] rounded-[2rem] overflow-hidden shadow-md transition-all">
                 <Image
-                  src="/images/programs/office_stress_relief.png"
+                  src="/images/programs/office_stress_relief.webp"
                   alt="스트레스 케어"
                   fill
                   className="object-cover transition-transform duration-700"
@@ -276,7 +276,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="bg-[#00305B] text-white py-20 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('/images/center/play_room.png')] bg-cover bg-center bg-fixed"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('/images/center/play_room.webp')] bg-cover bg-center bg-fixed"></div>
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">변화는 뇌에서 시작됩니다</h2>
           <Link

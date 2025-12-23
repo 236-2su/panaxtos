@@ -106,9 +106,9 @@ export default function ReservationList() {
 
                 {/* 비밀번호 확인 모달 */}
                 {showPasswordModal && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
                         <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-xl">
-                            <h3 className="text-lg font-bold mb-4">예약 취소</h3>
+                            <h3 id="modal-title" className="text-lg font-bold mb-4">예약 취소</h3>
                             <p className="text-gray-600 mb-4 text-sm">예약 취소를 위해 설정한 비밀번호를 입력해주세요.</p>
                             <input
                                 type="password"
@@ -117,6 +117,7 @@ export default function ReservationList() {
                                 className="w-full border p-2 rounded mb-4"
                                 placeholder="비밀번호 입력"
                                 autoFocus
+                                aria-label="비밀번호"
                             />
                             <div className="flex justify-end gap-2">
                                 <button

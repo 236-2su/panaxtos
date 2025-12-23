@@ -1073,8 +1073,8 @@ video {
   -moz-column-gap: 2rem;
        column-gap: 2rem;
 }
-.gap-y-3 {
-  row-gap: 0.75rem;
+.gap-y-4 {
+  row-gap: 1rem;
 }
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1414,8 +1414,8 @@ video {
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
-.bg-\[url\(\'\/images\/center\/play_room\.png\'\)\] {
-  background-image: url('/images/center/play_room.png');
+.bg-\[url\(\'\/images\/center\/play_room\.webp\'\)\] {
+  background-image: url('/images/center/play_room.webp');
 }
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
@@ -1732,9 +1732,6 @@ video {
 }
 .font-medium {
   font-weight: 500;
-}
-.font-normal {
-  font-weight: 400;
 }
 .font-semibold {
   font-weight: 600;
